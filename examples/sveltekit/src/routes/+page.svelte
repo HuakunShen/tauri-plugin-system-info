@@ -30,16 +30,21 @@
     refreshNetworks,
     refreshNetworksList,
     refreshProcesses,
+    debugCommand,
+    AllSystemInfo,
+    StaticInfo,
+    MemoryInfo,
+    CpuInfo,
   } from "tauri-plugin-system-info-api";
   import { invoke } from "@tauri-apps/api";
   import { z } from "zod";
   import { onMount } from "svelte";
 
   onMount(async () => {
-    console.log(await allSysInfo());
-    console.log(await memoryInfo());
-    console.log(await staticInfo());
-    console.log(await cpuInfo());
+    console.log(AllSystemInfo.parse(await allSysInfo()));
+    console.log(MemoryInfo.parse(await memoryInfo()));
+    console.log(StaticInfo.parse(await staticInfo()));
+    console.log(CpuInfo.parse(await cpuInfo()));
   });
 
   let data: string = "";

@@ -2,6 +2,7 @@ pub mod commands;
 pub mod model;
 pub mod utils;
 
+use model::DiskKind;
 use serde::{ser::Serializer, Serialize};
 use tauri::{
     plugin::{Builder, TauriPlugin},
@@ -24,6 +25,12 @@ impl Serialize for Error {
         serializer.serialize_str(self.to_string().as_ref())
     }
 }
+
+#[tauri::command]
+async fn debug() -> Result<DiskKind> {
+  Ok(DiskKind::Unknown(16))
+}
+
 
 /// Initializes the plugin.
 pub fn init<R: Runtime>() -> TauriPlugin<R> {
@@ -67,6 +74,7 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
             commands::refresh::refresh_networks,
             commands::refresh::refresh_networks_list,
             commands::refresh::refresh_processes,
+            debug
         ])
         .setup(|app| {
             app.manage(utils::SysInfoState::default());

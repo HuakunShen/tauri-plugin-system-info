@@ -154,6 +154,7 @@ pub struct Network {
     errors_on_transmitted: u64,
     total_errors_on_transmitted: u64,
     mac_address: MacAddr,
+    mac_address_str: String,
 }
 
 impl Network {
@@ -173,6 +174,7 @@ impl Network {
             errors_on_transmitted: network_data.errors_on_transmitted(),
             total_errors_on_transmitted: network_data.total_errors_on_transmitted(),
             mac_address: network_data.mac_address().into(),
+            mac_address_str: network_data.mac_address().to_string(),
         }
     }
 }
