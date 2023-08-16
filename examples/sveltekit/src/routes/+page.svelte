@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { getInterfaces, NetworkInterface } from "tauri-plugin-network-api";
+  // import { getInterfaces, NetworkInterface } from "tauri-plugin-network-api";
+  import { total_memory } from "tauri-plugin-system-info-api";
   import { invoke } from "@tauri-apps/api";
   import { z } from "zod";
   import { onMount } from "svelte";
@@ -8,20 +9,23 @@
   let error: string = "";
 
   function getInterfacesOnClick() {
-    getInterfaces().then((ifaces: Array<Object>) => {
-      const parsed = z.array(NetworkInterface).safeParse(ifaces);
-      if (parsed.success) {
-        data = JSON.stringify(parsed.data, null, 2);
-      } else {
-        error = parsed.error.toString();
-      }
-    });
+    // getInterfaces().then((ifaces: Array<Object>) => {
+    //   const parsed = z.array(NetworkInterface).safeParse(ifaces);
+    //   if (parsed.success) {
+    //     data = JSON.stringify(parsed.data, null, 2);
+    //   } else {
+    //     error = parsed.error.toString();
+    //   }
+    // });
   }
 
-  onMount(() => {
-    invoke("plugin:network|debug").then((x) => {
-      console.log(x);
-    });
+  onMount(async () => {
+    // invoke("plugin:network|debug").then((x) => {
+    //   console.log(x);
+    // });
+
+    const t_m = await total_memory();
+    console.log(t_m);
   });
 </script>
 
