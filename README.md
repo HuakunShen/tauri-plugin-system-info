@@ -2,6 +2,40 @@
 
 > This is a Tauri plugin for reading system information.
 
+## Installation
+
+> If you are installing from npm and crate.io package registry, make sure the versions for both packages are the same, otherwise, the API may not match.
+
+### Rust Install
+
+`cargo add tauri-plugin-system-info` to add the package.
+
+Or add the following to your `Cargo.toml` for the latest unpublished version (not recommanded).
+
+```toml
+tauri-plugin-system-info = { git = "https://github.com/HuakunShen/tauri-plugin-system-info", branch = "main" }
+```
+
+### NPM Install
+
+Run the following to install JavaScript/TypeScript API package.
+
+```bash
+npm i tauri-plugin-system-info-api
+# npm add https://github.com/HuakunShen/tauri-plugin-system-info # or this for latest unpublished version (not recommended)
+```
+
+In `main.rs`, add the following to your `tauri::Builder`:
+
+```rust
+fn main() {
+    tauri::Builder::default()
+        .plugin(tauri_plugin_system_info::init())
+        .run(tauri::generate_context!())
+        .expect("error while running tauri application");
+}
+```
+
 ## Info Supported
 
 - [x] CPU
@@ -11,7 +45,7 @@
 - [x] Hostname
 - [x] Kernel Version
 - [x] OS Version
-- [ ] Battery
+- [x] Battery
 
 ## Third Party Libraries Used
 
@@ -31,16 +65,23 @@ The exported zod schemas can be used to parse data and make sure the data return
 
 ```typescript
 import {
+  allSysInfo,
+  memoryInfo,
+  staticInfo,
+  cpuInfo,
   AllSystemInfo,
   StaticInfo,
   MemoryInfo,
   CpuInfo,
+  batteries,
+  Batteries,
 } from "tauri-plugin-system-info-api";
 
 console.log(AllSystemInfo.parse(await allSysInfo()));
 console.log(MemoryInfo.parse(await memoryInfo()));
 console.log(StaticInfo.parse(await staticInfo()));
 console.log(CpuInfo.parse(await cpuInfo()));
+console.log(Batteries.parse(await batteries()));
 ```
 
 ### Rust

@@ -30,3 +30,4 @@ export declare function refreshNetworks(): Promise<void>;
 export declare function refreshNetworksList(): Promise<void>;
 export declare function refreshProcesses(): Promise<void>;
 export declare function debugCommand(): Promise<unknown>;
+export declare function batteries(): Promise<unknown>;

@@ -1,6 +1,10 @@
 use serde::{Deserialize, Serialize};
+use starship_battery::units::{
+    ElectricPotential, Energy, Power, Ratio, ThermodynamicTemperature, Time,
+};
 use std::path::PathBuf;
 use sysinfo::{ComponentExt, CpuExt, DiskExt, NetworkExt, PidExt, ProcessExt};
+use uom::si::thermodynamic_temperature::{degree_celsius, degree_fahrenheit};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub enum DiskKind {
@@ -255,6 +259,122 @@ impl From<&sysinfo::Process> for Process {
                 Some(session_id) => Some(session_id.as_u32()),
                 None => None,
             },
+        }
+    }
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub enum BatteryState {
+    Unknown,
+    Charging,
+    Discharging,
+    Empty,
+    Full,
+}
+
+impl From<starship_battery::State> for BatteryState {
+    fn from(state: starship_battery::State) -> Self {
+        match state {
+            starship_battery::State::Unknown => BatteryState::Unknown,
+            starship_battery::State::Charging => BatteryState::Charging,
+            starship_battery::State::Discharging => BatteryState::Discharging,
+            starship_battery::State::Empty => BatteryState::Empty,
+            starship_battery::State::Full => BatteryState::Full,
+            _ => BatteryState::Unknown,
+        }
+    }
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub enum Technology {
+    Unknown,
+    LithiumIon,
+    LeadAcid,
+    LithiumPolymer,
+    NickelMetalHydride,
+    NickelCadmium,
+    NickelZinc,
+    LithiumIronPhosphate,
+    RechargeableAlkalineManganese,
+}
+
+impl From<starship_battery::Technology> for Technology {
+    fn from(tech: starship_battery::Technology) -> Self {
+        match tech {
+            starship_battery::Technology::Unknown => Technology::Unknown,
+            starship_battery::Technology::LithiumIon => Technology::LithiumIon,
+            starship_battery::Technology::LeadAcid => Technology::LeadAcid,
+            starship_battery::Technology::LithiumPolymer => Technology::LithiumPolymer,
+            starship_battery::Technology::NickelMetalHydride => Technology::NickelMetalHydride,
+            starship_battery::Technology::NickelCadmium => Technology::NickelCadmium,
+            starship_battery::Technology::NickelZinc => Technology::NickelZinc,
+            starship_battery::Technology::LithiumIronPhosphate => Technology::LithiumIronPhosphate,
+            starship_battery::Technology::RechargeableAlkalineManganese => {
+                Technology::RechargeableAlkalineManganese
+            }
+            _ => Technology::Unknown,
+        }
+    }
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Battery {
+    state_of_charge: Ratio,
+    energy: Energy,
+    energy_full: Energy,
+    energy_full_design: Energy,
+    energy_rate: Power,
+    voltage: ElectricPotential,
+    state_of_health: Ratio,
+    state: BatteryState,
+    technology: Technology,
+    temperature_kelin: Option<ThermodynamicTemperature>,
+    temperature_celsius: Option<f32>,
+    temperature_fahrenheit: Option<f32>,
+    cycle_count: Option<u32>,
+    vendor: Option<String>,
+    model: Option<String>,
+    serial_number: Option<String>,
+    time_to_full: Option<Time>,
+    time_to_empty: Option<Time>,
+}
+
+impl From<starship_battery::Battery> for Battery {
+    fn from(battery: starship_battery::Battery) -> Self {
+        Battery {
+            state_of_charge: battery.state_of_charge(),
+            energy: battery.energy(),
+            energy_full: battery.energy_full(),
+            energy_full_design: battery.energy_full_design(),
+            energy_rate: battery.energy_rate(),
+            voltage: battery.voltage(),
+            state_of_health: battery.state_of_health(),
+            state: battery.state().into(),
+            technology: battery.technology().into(),
+            temperature_kelin: battery.temperature(),
+            temperature_celsius: match battery.temperature() {
+                Some(temp) => Some(temp.get::<degree_celsius>()),
+                None => None,
+            },
+            temperature_fahrenheit: match battery.temperature() {
+                Some(temp) => Some(temp.get::<degree_fahrenheit>()),
+                None => None,
+            },
+            cycle_count: battery.cycle_count(),
+            vendor: match battery.vendor() {
+                Some(vendor) => Some(vendor.to_string()),
+                None => None,
+            },
+            model: match battery.model() {
+                Some(model) => Some(model.to_string()),
+                None => None,
+            },
+            serial_number: match battery.serial_number() {
+                Some(serial_number) => Some(serial_number.to_string()),
+                None => None,
+            },
+            time_to_full: battery.time_to_full(),
+            time_to_empty: battery.time_to_empty(),
         }
     }
 }

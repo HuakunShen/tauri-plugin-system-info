@@ -118,3 +118,7 @@ export function refreshProcesses(): Promise<void> {
 export function debugCommand() {
   return invoke("plugin:system-info|debug");
 }
+
+export function batteries() {
+  return invoke("plugin:system-info|batteries");
+}

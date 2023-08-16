@@ -1,4 +1,4 @@
-use crate::model::{Component, Cpu, Disk, Network, Process};
+use crate::model::{Battery, Component, Cpu, Disk, Network, Process};
 use std::sync::Mutex;
 use sysinfo::{CpuRefreshKind, Pid, ProcessRefreshKind, RefreshKind, System, SystemExt};
 
@@ -150,5 +150,17 @@ impl SysInfo {
             .into_iter()
             .map(|(_, process)| process.into())
             .collect()
+    }
+    pub fn batteries(&self) -> Result<Vec<Battery>, starship_battery::Error> {
+        let manager = starship_battery::Manager::new()?;
+        Ok(manager
+            .batteries()?
+            .enumerate()
+            .into_iter()
+            .filter_map(|(idx, maybe_battery)| match maybe_battery {
+                Ok(battery) => Some(battery.into()),
+                Err(_) => None,
+            })
+            .collect())
     }
 }

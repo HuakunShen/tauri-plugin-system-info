@@ -74,6 +74,7 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
             commands::refresh::refresh_networks,
             commands::refresh::refresh_networks_list,
             commands::refresh::refresh_processes,
+            commands::battery::batteries,
             debug
         ])
         .setup(|app| {

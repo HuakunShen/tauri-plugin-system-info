@@ -1,7 +1,7 @@
 [package]
 name = "tauri-plugin-system-info"
 version = "0.0.0"
-authors = [ "You" ]
+authors = [ "Huakun" ]
 description = ""
 edition = "2021"
 rust-version = "1.60"
@@ -12,3 +12,5 @@ tauri = { version = "1.4.0" }
 serde = "1.0"
 thiserror = "1.0"
 sysinfo = { version = "0.29.8" }
+starship-battery = "0.8.2"
+uom = { version = "0.35.0", features = ["serde"] }

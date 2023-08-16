@@ -156,3 +156,50 @@ export const AllSystemInfo = z.object({
   processes: Process.array(),
 });
 export type AllSystemInfo = z.infer<typeof AllSystemInfo>;
+
+export const BatteryState = z.enum([
+  "Unknown",
+  "Charging",
+  "Discharging",
+  "Empty",
+  "Full",
+]);
+export type BatteryState = z.infer<typeof BatteryState>;
+
+export const BatteryTechnology = z.enum([
+  "Unknown",
+  "LithiumIon",
+  "LeadAcid",
+  "LithiumPolymer",
+  "NickelMetalHydride",
+  "NickelCadmium",
+  "NickelZinc",
+  "LithiumIronPhosphate",
+  "RechargeableAlkalineManganese",
+]);
+export type BatteryTechnology = z.infer<typeof BatteryTechnology>;
+
+export const Battery = z.object({
+  state_of_charge: z.number(),
+  energy: z.number(),
+  energy_full: z.number(),
+  energy_full_design: z.number(),
+  energy_rate: z.number(),
+  voltage: z.number(),
+  state_of_health: z.number(),
+  state: BatteryState,
+  technology: BatteryTechnology,
+  temperature_kelin: z.number().nullable(),
+  temperature_celsius: z.number().nullable(),
+  temperature_fahrenheit: z.number().nullable(),
+  cycle_count: z.number().nullable(),
+  vendor: z.string().nullable(),
+  model: z.string().nullable(),
+  serial_number: z.string().nullable(),
+  time_to_full: z.number().nullable(),
+  time_to_empty: z.number().nullable(),
+});
+export type Battery = z.infer<typeof Battery>;
+
+export const Batteries = Battery.array();
+export type Batteries = z.infer<typeof Batteries>;

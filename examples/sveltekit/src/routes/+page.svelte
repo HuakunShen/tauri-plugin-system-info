@@ -1,6 +1,7 @@
 <script lang="ts">
   import {
     allSysInfo,
+    batteries,
     totalMemory,
     usedMemory,
     totalSwap,
@@ -35,6 +36,7 @@
     StaticInfo,
     MemoryInfo,
     CpuInfo,
+    Batteries,
   } from "tauri-plugin-system-info-api";
   import { invoke } from "@tauri-apps/api";
   import { z } from "zod";
@@ -45,6 +47,7 @@
     console.log(MemoryInfo.parse(await memoryInfo()));
     console.log(StaticInfo.parse(await staticInfo()));
     console.log(CpuInfo.parse(await cpuInfo()));
+    console.log(Batteries.parse(await batteries()));
   });
 
   let data: string = "";
