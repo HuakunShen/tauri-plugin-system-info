@@ -1,11 +1,13 @@
 [package]
 name = "tauri-plugin-system-info"
 version = "0.1.0"
+license = "MIT"
 authors = [ "Huakun" ]
-description = ""
+description = "A tauri plugin for retrieving system info"
 edition = "2021"
 rust-version = "1.60"
 exclude = ["/examples", "/webview-dist", "/webview-src", "node_modules"]
+repository = "https://github.com/HuakunShen/tauri-plugin-system-info"
 
 [dependencies]
 tauri = { version = "1.4.0" }
