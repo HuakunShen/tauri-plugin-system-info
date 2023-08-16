@@ -1,101 +1,117 @@
 import { invoke } from "@tauri-apps/api/tauri";
+import {
+  DiskKind,
+  MacAddress,
+  ProcessStatus,
+  DiskUsage,
+  Cpu,
+  Disk,
+  Network,
+  Component,
+  Process,
+  StaticInfo,
+  MemoryInfo,
+  CpuInfo,
+  AllSystemInfo,
+} from "./type";
+import { number } from "zod";
 
-export function allSysInfo() {
+export function allSysInfo(): Promise<AllSystemInfo> {
   return invoke("plugin:system-info|all_sys_info");
 }
 // Memory
-export function totalMemory() {
+export function totalMemory(): Promise<number> {
   return invoke("plugin:system-info|total_memory");
 }
-export function usedMemory() {
+export function usedMemory(): Promise<number> {
   return invoke("plugin:system-info|used_memory");
 }
-export function totalSwap() {
+export function totalSwap(): Promise<number> {
   return invoke("plugin:system-info|total_swap");
 }
-export function usedSwap() {
+export function usedSwap(): Promise<number> {
   return invoke("plugin:system-info|used_swap");
 }
-export function memoryInfo() {
+export function memoryInfo(): Promise<MemoryInfo> {
   return invoke("plugin:system-info|memory_info");
 }
 // Static Info
-export function hostname() {
+export function hostname(): Promise<String> {
   return invoke("plugin:system-info|hostname");
 }
-export function name() {
+export function name(): Promise<String> {
   return invoke("plugin:system-info|name");
 }
-export function kernelVersion() {
+export function kernelVersion(): Promise<String> {
   return invoke("plugin:system-info|kernel_version");
 }
-export function osVersion() {
+export function osVersion(): Promise<String> {
   return invoke("plugin:system-info|os_version");
 }
-export function staticInfo() {
+export function staticInfo(): Promise<StaticInfo> {
   return invoke("plugin:system-info|static_info");
 }
 // Components
-export function components() {
+export function components(): Promise<Component> {
   return invoke("plugin:system-info|components");
 }
 // Cpu
-export function cpus() {
+export function cpus(): Promise<Cpu> {
   return invoke("plugin:system-info|cpus");
 }
-export function cpuCount() {
+export function cpuCount(): Promise<number> {
   return invoke("plugin:system-info|cpu_count");
 }
-export function cpuInfo() {
+export function cpuInfo(): Promise<CpuInfo> {
   return invoke("plugin:system-info|cpu_info");
 }
 // Disk
-export function disks() {
+export function disks(): Promise<Disk[]> {
   return invoke("plugin:system-info|disks");
 }
 // Network
-export function networks() {
+export function networks(): Promise<Network[]> {
   return invoke("plugin:system-info|networks");
 }
 // Process
-export function processes() {
+export function processes(): Promise<Process[]> {
   return invoke("plugin:system-info|processes");
 }
 // Refresh
-export function refreshAll() {
+export function refreshAll(): Promise<void> {
   return invoke("plugin:system-info|refresh_all");
 }
-export function refreshMemory() {
+export function refreshMemory(): Promise<void> {
   return invoke("plugin:system-info|refresh_memory");
 }
-export function refreshCpu() {
+export function refreshCpu(): Promise<void> {
   return invoke("plugin:system-info|refresh_cpu");
 }
-export function refreshSystem() {
+export function refreshSystem(): Promise<void> {
   return invoke("plugin:system-info|refresh_system");
 }
-export function refreshComponents() {
+export function refreshComponents(): Promise<void> {
   return invoke("plugin:system-info|refresh_components");
 }
-export function refreshComponentsList() {
+export function refreshComponentsList(): Promise<void> {
   return invoke("plugin:system-info|refresh_components_list");
 }
-export function refreshDisks() {
+export function refreshDisks(): Promise<void> {
   return invoke("plugin:system-info|refresh_disks");
 }
-export function refreshDisksList() {
+export function refreshDisksList(): Promise<void> {
   return invoke("plugin:system-info|refresh_disks_list");
 }
-export function refreshUsersList() {
+export function refreshUsersList(): Promise<void> {
   return invoke("plugin:system-info|refresh_users_list");
 }
-export function refreshNetworks() {
+export function refreshNetworks(): Promise<void> {
   return invoke("plugin:system-info|refresh_networks");
 }
-export function refreshNetworksList() {
+export function refreshNetworksList(): Promise<void> {
   return invoke("plugin:system-info|refresh_networks_list");
 }
-export function refreshProcesses() {
+export function refreshProcesses(): Promise<void> {
   return invoke("plugin:system-info|refresh_processes");
 }
 
