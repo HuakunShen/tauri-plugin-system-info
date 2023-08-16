@@ -4,7 +4,7 @@ use sysinfo::{System, SystemExt};
 
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let sysinfo = SysInfo::default();
+    // let sysinfo = SysInfo::default();
     // let hname = sysinfo.hostname1()?;
     // println!("{}", sysinfo.hostname().unwrap());
     // let sys = System::default();

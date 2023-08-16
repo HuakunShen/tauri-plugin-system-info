@@ -4,11 +4,9 @@ pub mod utils;
 
 use serde::{ser::Serializer, Serialize};
 use tauri::{
-    command,
     plugin::{Builder, TauriPlugin},
-    AppHandle, Manager, Runtime, State, Window,
+    Manager, Runtime,
 };
-
 
 type Result<T> = std::result::Result<T, Error>;
 
@@ -32,17 +30,46 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
     Builder::new("system-info")
         .invoke_handler(tauri::generate_handler![
             commands::all_sys_info,
+            // memory
             commands::memory::total_memory,
             commands::memory::used_memory,
             commands::memory::total_swap,
             commands::memory::used_swap,
+            commands::memory::memory_info,
+            // static info
             commands::static_info::hostname,
             commands::static_info::name,
             commands::static_info::kernel_version,
             commands::static_info::os_version,
+            commands::static_info::static_info,
+            // componenets
+            commands::component::components,
+            // cpu
+            commands::cpu::cpus,
+            commands::cpu::cpu_count,
+            commands::cpu::cpu_info,
+            // disk
+            commands::disk::disks,
+            // networks
+            commands::network::networks,
+            // processes
+            commands::process::processes,
+            // refresh
+            commands::refresh::refresh_all,
+            commands::refresh::refresh_memory,
+            commands::refresh::refresh_cpu,
+            commands::refresh::refresh_system,
+            commands::refresh::refresh_components,
+            commands::refresh::refresh_components_list,
+            commands::refresh::refresh_disks,
+            commands::refresh::refresh_disks_list,
+            commands::refresh::refresh_users_list,
+            commands::refresh::refresh_networks,
+            commands::refresh::refresh_networks_list,
+            commands::refresh::refresh_processes,
         ])
         .setup(|app| {
-            app.manage(utils::SysInfo::default());
+            app.manage(utils::SysInfoState::default());
             Ok(())
         })
         .build()

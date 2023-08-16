@@ -7,25 +7,25 @@ fn main() {
     sys.refresh_all();
 
     // We display all disks' information:
-    println!("=> disks:");
-    for disk in sys.disks() {
-        println!("{:?}", disk);
-    }
+    // println!("=> disks:");
+    // for disk in sys.disks() {
+    //     println!("{:?}", disk);
+    // }
     // Network interfaces name, data received and data transmitted:
     // println!("=> networks:");
     // sys.refresh_networks();
-    for i in 1..10 {
-        std::thread::sleep(std::time::Duration::from_secs(2));
-        sys.refresh_networks();
-        for (interface_name, data) in sys.networks() {
-            println!(
-                "{}: {}/{} B",
-                interface_name,
-                data.received(),
-                data.transmitted()
-            );
-        }
-    }
+    // for i in 1..10 {
+    //     std::thread::sleep(std::time::Duration::from_secs(2));
+    //     sys.refresh_networks();
+    //     for (interface_name, data) in sys.networks() {
+    //         println!(
+    //             "{}: {}/{} B",
+    //             interface_name,
+    //             data.received(),
+    //             data.transmitted()
+    //         );
+    //     }
+    // }
 
     // Components temperature:
     // println!("=> components:");
@@ -47,10 +47,10 @@ fn main() {
     // println!("System host name:        {:?}", sys.host_name());
 
     // Number of CPUs:
-    println!("NB CPUs: {}", sys.cpus().len());
+    // println!("NB CPUs: {}", sys.cpus().len());
 
     // Display processes ID, name na disk usage:
-    // for (pid, process) in sys.processes() {
-    //     println!("[{}] {} {:?}", pid, process.name(), process.disk_usage());
-    // }
+    for (pid, process) in sys.processes() {
+        println!("[{}] {} {:?}", pid, process.name(), process.disk_usage());
+    }
 }

@@ -1,48 +1,53 @@
 <script lang="ts">
-  // import { getInterfaces, NetworkInterface } from "tauri-plugin-network-api";
-  import { total_memory } from "tauri-plugin-system-info-api";
+  import {
+    all_sys_info,
+    total_memory,
+    used_memory,
+    total_swap,
+    used_swap,
+    memory_info,
+    hostname,
+    name,
+    kernel_version,
+    os_version,
+    static_info,
+    components,
+    cpus,
+    cpu_count,
+    cpu_info,
+    disks,
+    networks,
+    processes,
+    refresh_all,
+    refresh_memory,
+    refresh_cpu,
+    refresh_system,
+    refresh_components,
+    refresh_components_list,
+    refresh_disks,
+    refresh_disks_list,
+    refresh_users_list,
+    refresh_networks,
+    refresh_networks_list,
+    refresh_processes,
+  } from "tauri-plugin-system-info-api";
   import { invoke } from "@tauri-apps/api";
   import { z } from "zod";
   import { onMount } from "svelte";
 
+  onMount(async () => {
+    console.log(await all_sys_info());
+    console.log(await memory_info());
+    console.log(await static_info());
+    console.log(await cpu_info());
+  });
+
   let data: string = "";
   let error: string = "";
-
-  function getInterfacesOnClick() {
-    // getInterfaces().then((ifaces: Array<Object>) => {
-    //   const parsed = z.array(NetworkInterface).safeParse(ifaces);
-    //   if (parsed.success) {
-    //     data = JSON.stringify(parsed.data, null, 2);
-    //   } else {
-    //     error = parsed.error.toString();
-    //   }
-    // });
-  }
-
-  onMount(async () => {
-    // invoke("plugin:network|debug").then((x) => {
-    //   console.log(x);
-    // });
-
-    const t_m = await total_memory();
-    console.log(t_m);
-  });
 </script>
 
-<div class="flex flex-col h-full">
-  {#if error}
-    <div class="alert alert-error">
-      <span>{error}</span>
-    </div>
-  {/if}
-  <button class="flex-none btn" on:click={getInterfacesOnClick}
-    >Get All Interfaces</button
+<div class="alert alert-warning">
+  <span
+    >Check console for system info. There is too much data to display on screen.</span
   >
-  {#if data}
-    <div class="grow card bg-neutral w-full overflow-auto mt-3">
-      <div class="card-body">
-        <pre>{data}</pre>
-      </div>
-    </div>
-  {/if}
 </div>
