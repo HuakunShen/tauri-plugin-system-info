@@ -242,10 +242,7 @@ impl From<&sysinfo::Process> for Process {
             root: proc.root().into(),
             memory: proc.memory(),
             virtual_memory: proc.virtual_memory(),
-            parent: match proc.parent() {
-                Some(parent) => Some(parent.as_u32()),
-                None => None,
-            },
+            parent: proc.parent().map(|parent| parent.as_u32()),
             status: proc.status().into(),
             start_time: proc.start_time(),
             run_time: proc.run_time(),
@@ -255,10 +252,7 @@ impl From<&sysinfo::Process> for Process {
             effective_user_id: proc.effective_user_id().map(|uid| uid.to_string()),
             group_id: proc.group_id().map(|gid| gid.to_string()),
             effective_group_id: proc.effective_group_id().map(|gid| gid.to_string()),
-            session_id: match proc.session_id() {
-                Some(session_id) => Some(session_id.as_u32()),
-                None => None,
-            },
+            session_id: proc.session_id().map(|session_id| session_id.as_u32()),
         }
     }
 }
@@ -280,7 +274,6 @@ impl From<starship_battery::State> for BatteryState {
             starship_battery::State::Discharging => BatteryState::Discharging,
             starship_battery::State::Empty => BatteryState::Empty,
             starship_battery::State::Full => BatteryState::Full,
-            _ => BatteryState::Unknown,
         }
     }
 }
@@ -352,27 +345,12 @@ impl From<starship_battery::Battery> for Battery {
             state: battery.state().into(),
             technology: battery.technology().into(),
             temperature_kelin: battery.temperature(),
-            temperature_celsius: match battery.temperature() {
-                Some(temp) => Some(temp.get::<degree_celsius>()),
-                None => None,
-            },
-            temperature_fahrenheit: match battery.temperature() {
-                Some(temp) => Some(temp.get::<degree_fahrenheit>()),
-                None => None,
-            },
+            temperature_celsius: battery.temperature().map(|temp| temp.get::<degree_celsius>()),
+            temperature_fahrenheit: battery.temperature().map(|temp| temp.get::<degree_fahrenheit>()),
             cycle_count: battery.cycle_count(),
-            vendor: match battery.vendor() {
-                Some(vendor) => Some(vendor.to_string()),
-                None => None,
-            },
-            model: match battery.model() {
-                Some(model) => Some(model.to_string()),
-                None => None,
-            },
-            serial_number: match battery.serial_number() {
-                Some(serial_number) => Some(serial_number.to_string()),
-                None => None,
-            },
+            vendor: battery.vendor().map(|vendor| vendor.to_string()),
+            model: battery.model().map(|model| model.to_string()),
+            serial_number: battery.serial_number().map(|serial_number| serial_number.to_string()),
             time_to_full: battery.time_to_full(),
             time_to_empty: battery.time_to_empty(),
         }

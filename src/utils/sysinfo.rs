@@ -112,7 +112,7 @@ impl SysInfo {
 
     // cpu
     pub fn cpus(&self) -> Vec<Cpu> {
-        self.sys.cpus().into_iter().map(|cpu| cpu.into()).collect()
+        self.sys.cpus().iter().map(|cpu| cpu.into()).collect()
     }
 
     pub fn cpu_count(&self) -> usize {
@@ -122,11 +122,7 @@ impl SysInfo {
     // disks
     pub fn disks(&mut self) -> Vec<Disk> {
         self.refresh_disks_list();
-        self.sys
-            .disks()
-            .into_iter()
-            .map(|disk| disk.into())
-            .collect()
+        self.sys.disks().iter().map(|disk| disk.into()).collect()
     }
 
     // other
@@ -140,14 +136,14 @@ impl SysInfo {
     pub fn components(&self) -> Vec<Component> {
         self.sys
             .components()
-            .into_iter()
+            .iter()
             .map(|component| component.into())
             .collect()
     }
     pub fn processes(&self) -> Vec<Process> {
         self.sys
             .processes()
-            .into_iter()
+            .iter()
             .map(|(_, process)| process.into())
             .collect()
     }
@@ -156,8 +152,7 @@ impl SysInfo {
         Ok(manager
             .batteries()?
             .enumerate()
-            .into_iter()
-            .filter_map(|(idx, maybe_battery)| match maybe_battery {
+            .filter_map(|(_, maybe_battery)| match maybe_battery {
                 Ok(battery) => Some(battery.into()),
                 Err(_) => None,
             })
