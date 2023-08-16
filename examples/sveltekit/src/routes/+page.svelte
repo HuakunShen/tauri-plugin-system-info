@@ -1,45 +1,45 @@
 <script lang="ts">
   import {
-    all_sys_info,
-    total_memory,
-    used_memory,
-    total_swap,
-    used_swap,
-    memory_info,
+    allSysInfo,
+    totalMemory,
+    usedMemory,
+    totalSwap,
+    usedSwap,
+    memoryInfo,
     hostname,
     name,
-    kernel_version,
-    os_version,
-    static_info,
+    kernelVersion,
+    osVersion,
+    staticInfo,
     components,
     cpus,
-    cpu_count,
-    cpu_info,
+    cpuCount,
+    cpuInfo,
     disks,
     networks,
     processes,
-    refresh_all,
-    refresh_memory,
-    refresh_cpu,
-    refresh_system,
-    refresh_components,
-    refresh_components_list,
-    refresh_disks,
-    refresh_disks_list,
-    refresh_users_list,
-    refresh_networks,
-    refresh_networks_list,
-    refresh_processes,
+    refreshAll,
+    refreshMemory,
+    refreshCpu,
+    refreshSystem,
+    refreshComponents,
+    refreshComponentsList,
+    refreshDisks,
+    refreshDisksList,
+    refreshUsersList,
+    refreshNetworks,
+    refreshNetworksList,
+    refreshProcesses,
   } from "tauri-plugin-system-info-api";
   import { invoke } from "@tauri-apps/api";
   import { z } from "zod";
   import { onMount } from "svelte";
 
   onMount(async () => {
-    console.log(await all_sys_info());
-    console.log(await memory_info());
-    console.log(await static_info());
-    console.log(await cpu_info());
+    console.log(await allSysInfo());
+    console.log(await memoryInfo());
+    console.log(await staticInfo());
+    console.log(await cpuInfo());
   });
 
   let data: string = "";
