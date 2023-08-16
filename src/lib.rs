@@ -28,9 +28,8 @@ impl Serialize for Error {
 
 #[tauri::command]
 async fn debug() -> Result<DiskKind> {
-  Ok(DiskKind::Unknown(16))
+    Ok(DiskKind::Unknown(16))
 }
-
 
 /// Initializes the plugin.
 pub fn init<R: Runtime>() -> TauriPlugin<R> {

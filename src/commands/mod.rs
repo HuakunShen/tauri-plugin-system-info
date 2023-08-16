@@ -1,5 +1,6 @@
 use crate::{model::AllSystemInfo, utils::SysInfoState};
 
+pub mod battery;
 pub mod component;
 pub mod cpu;
 pub mod disk;
@@ -8,7 +9,6 @@ pub mod network;
 pub mod process;
 pub mod refresh;
 pub mod static_info;
-pub mod battery;
 
 #[tauri::command]
 pub fn all_sys_info(state: tauri::State<'_, SysInfoState>) -> Result<AllSystemInfo, String> {

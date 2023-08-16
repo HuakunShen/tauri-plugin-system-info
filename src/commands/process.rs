@@ -1,4 +1,4 @@
-use crate::{utils::SysInfoState, model::Process};
+use crate::{model::Process, utils::SysInfoState};
 
 #[tauri::command]
 pub fn processes(state: tauri::State<'_, SysInfoState>) -> Result<Vec<Process>, String> {

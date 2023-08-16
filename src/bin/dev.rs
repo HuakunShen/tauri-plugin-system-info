@@ -1,7 +1,6 @@
+use sysinfo::{System, SystemExt};
 use tauri_plugin_system_info::commands::static_info::{hostname, kernel_version, name, os_version};
 use tauri_plugin_system_info::utils::SysInfo;
-use sysinfo::{System, SystemExt};
-
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     // let sysinfo = SysInfo::default();

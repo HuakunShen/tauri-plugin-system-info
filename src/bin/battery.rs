@@ -1,5 +1,5 @@
-use uom::si::time::second;
 use uom::si::thermodynamic_temperature::*;
+use uom::si::time::second;
 
 fn main() -> Result<(), starship_battery::Error> {
     let manager = starship_battery::Manager::new()?;
@@ -18,7 +18,10 @@ fn main() -> Result<(), starship_battery::Error> {
         println!("state_of_health: {:?}", state_of_health);
         println!("state: {:?}", battery.state());
         println!("technology: {:?}", battery.technology());
-        println!("temperature: {:?}", battery.temperature().unwrap().get::<degree_celsius>());
+        println!(
+            "temperature: {:?}",
+            battery.temperature().unwrap().get::<degree_celsius>()
+        );
         let cycle_count = battery.cycle_count();
         println!("cycle_count: {:?}", cycle_count);
         println!("vendor: {:?}", battery.vendor());
@@ -28,7 +31,10 @@ fn main() -> Result<(), starship_battery::Error> {
         //     "time_to_full: {:?}",
         //     battery.time_to_full().unwrap().get::<second>()
         // );
-        println!("time_to_empty: {:?}", battery.time_to_empty().unwrap().get::<second>());
+        println!(
+            "time_to_empty: {:?}",
+            battery.time_to_empty().unwrap().get::<second>()
+        );
     }
 
     Ok(())
