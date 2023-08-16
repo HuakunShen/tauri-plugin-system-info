@@ -1,0 +1,13 @@
+[package]
+name = "tauri-plugin-system-info"
+version = "0.0.0"
+authors = [ "You" ]
+description = ""
+edition = "2021"
+rust-version = "1.60"
+exclude = ["/examples", "/webview-dist", "/webview-src", "node_modules"]
+
+[dependencies]
+tauri = { version = "1.4.0" }
+serde = "1.0"
+thiserror = "1.0"
