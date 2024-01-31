@@ -52,6 +52,7 @@
 
 <div class="alert alert-warning">
   <span
-    >Check console for system info. There is too much data to display on screen.</span
+    >Make sure you are in Tauri desktop app with development mode. Right click and inspect elements, check console for system info logged. There is too much data to display on screen.</span
   >
+  <span>If there is error in console, this library may not support your OS/computer, you can notify the author.</span>
 </div>
