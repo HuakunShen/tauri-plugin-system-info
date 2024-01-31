@@ -1,6 +1,6 @@
 [package]
 name = "tauri-plugin-system-info"
-version = "0.1.1"
+version = "0.2.0"
 license = "MIT"
 authors = [ "Huakun" ]
 description = "A tauri plugin for retrieving system info"
@@ -10,9 +10,9 @@ exclude = ["/examples", "/webview-dist", "/webview-src", "node_modules"]
 repository = "https://github.com/HuakunShen/tauri-plugin-system-info"
 
 [dependencies]
-tauri = { version = "1.4.0" }
+tauri = { version = "1.5.4" }
 serde = "1.0"
 thiserror = "1.0"
-sysinfo = { version = "0.29.8" }
+sysinfo = { version = "0.30.5" }
 starship-battery = "0.8.2"
 uom = { version = "0.35.0", features = ["serde"] }

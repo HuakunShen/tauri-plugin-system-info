@@ -1,6 +1,8 @@
 use crate::model::{Battery, Component, Cpu, Disk, Network, Process};
 use std::sync::Mutex;
-use sysinfo::{CpuRefreshKind, Pid, ProcessRefreshKind, RefreshKind, System, SystemExt};
+use sysinfo::{
+    Components, CpuRefreshKind, Disks, Networks, Pid, ProcessRefreshKind, RefreshKind, System,
+};
 
 pub fn get_sys() -> System {
     System::new_all()
@@ -35,32 +37,8 @@ impl SysInfo {
     pub fn refresh_cpu(&mut self) {
         self.sys.refresh_cpu();
     }
-    pub fn refresh_system(&mut self) {
-        self.sys.refresh_system();
-    }
-    pub fn refresh_components(&mut self) {
-        self.sys.refresh_components();
-    }
-    pub fn refresh_components_list(&mut self) {
-        self.sys.refresh_components_list();
-    }
     pub fn refresh_processes(&mut self) {
         self.sys.refresh_processes();
-    }
-    pub fn refresh_disks(&mut self) {
-        self.sys.refresh_disks();
-    }
-    pub fn refresh_disks_list(&mut self) {
-        self.sys.refresh_disks_list();
-    }
-    pub fn refresh_users_list(&mut self) {
-        self.sys.refresh_users_list();
-    }
-    pub fn refresh_networks(&mut self) {
-        self.sys.refresh_networks();
-    }
-    pub fn refresh_networks_list(&mut self) {
-        self.sys.refresh_networks_list();
     }
     pub fn refresh_process(&mut self, pid: Pid) {
         self.sys.refresh_process(pid);
@@ -80,16 +58,16 @@ impl SysInfo {
 
     // static info
     pub fn hostname(&self) -> Option<String> {
-        self.sys.host_name()
+        System::host_name()
     }
     pub fn kernel_version(&self) -> Option<String> {
-        self.sys.kernel_version()
+        System::kernel_version()
     }
     pub fn os_version(&self) -> Option<String> {
-        self.sys.os_version()
+        System::os_version()
     }
     pub fn name(&self) -> Option<String> {
-        self.sys.name()
+        System::name()
     }
 
     // memory
@@ -121,21 +99,21 @@ impl SysInfo {
 
     // disks
     pub fn disks(&mut self) -> Vec<Disk> {
-        self.refresh_disks_list();
-        self.sys.disks().iter().map(|disk| disk.into()).collect()
+        let disks = Disks::new_with_refreshed_list();
+        disks.iter().map(|disk| disk.into()).collect()
     }
 
     // other
     pub fn networks(&self) -> Vec<Network> {
-        self.sys
-            .networks()
+        let networks = Networks::new_with_refreshed_list();
+        networks
             .into_iter()
             .map(|(name, data)| Network::new(name, data))
             .collect()
     }
     pub fn components(&self) -> Vec<Component> {
-        self.sys
-            .components()
+        let components = Components::new_with_refreshed_list();
+        components
             .iter()
             .map(|component| component.into())
             .collect()

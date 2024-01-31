@@ -63,7 +63,7 @@ export declare const Disk: z.ZodObject<{
         Unknown: number;
     }>]>;
     name: z.ZodString;
-    file_system: z.ZodArray<z.ZodNumber, "many">;
+    file_system: z.ZodString;
     mount_point: z.ZodString;
     total_space: z.ZodNumber;
     available_space: z.ZodNumber;
@@ -75,7 +75,7 @@ export declare const Disk: z.ZodObject<{
     }) & ("HDD" | "SSD" | {
         Unknown: number;
     } | undefined);
-    file_system: number[];
+    file_system: string;
     mount_point: string;
     total_space: number;
     available_space: number;
@@ -87,7 +87,7 @@ export declare const Disk: z.ZodObject<{
     }) & ("HDD" | "SSD" | {
         Unknown: number;
     } | undefined);
-    file_system: number[];
+    file_system: string;
     mount_point: string;
     total_space: number;
     available_space: number;
@@ -164,11 +164,11 @@ export declare type Component = z.infer<typeof Component>;
 export declare const Process: z.ZodObject<{
     name: z.ZodString;
     cmd: z.ZodArray<z.ZodString, "many">;
-    exe: z.ZodString;
+    exe: z.ZodNullable<z.ZodString>;
     pid: z.ZodNumber;
     environ: z.ZodArray<z.ZodString, "many">;
-    cwd: z.ZodString;
-    root: z.ZodString;
+    cwd: z.ZodNullable<z.ZodString>;
+    root: z.ZodNullable<z.ZodString>;
     memory: z.ZodNumber;
     virtual_memory: z.ZodNumber;
     parent: z.ZodNullable<z.ZodNumber>;
@@ -212,11 +212,11 @@ export declare const Process: z.ZodObject<{
     name: string;
     cpu_usage: number;
     cmd: string[];
-    exe: string;
+    exe: string | null;
     pid: number;
     environ: string[];
-    cwd: string;
-    root: string;
+    cwd: string | null;
+    root: string | null;
     memory: number;
     virtual_memory: number;
     parent: number | null;
@@ -242,11 +242,11 @@ export declare const Process: z.ZodObject<{
     name: string;
     cpu_usage: number;
     cmd: string[];
-    exe: string;
+    exe: string | null;
     pid: number;
     environ: string[];
-    cwd: string;
-    root: string;
+    cwd: string | null;
+    root: string | null;
     memory: number;
     virtual_memory: number;
     parent: number | null;
@@ -378,7 +378,7 @@ export declare const AllSystemInfo: z.ZodObject<{
             Unknown: number;
         }>]>;
         name: z.ZodString;
-        file_system: z.ZodArray<z.ZodNumber, "many">;
+        file_system: z.ZodString;
         mount_point: z.ZodString;
         total_space: z.ZodNumber;
         available_space: z.ZodNumber;
@@ -390,7 +390,7 @@ export declare const AllSystemInfo: z.ZodObject<{
         }) & ("HDD" | "SSD" | {
             Unknown: number;
         } | undefined);
-        file_system: number[];
+        file_system: string;
         mount_point: string;
         total_space: number;
         available_space: number;
@@ -402,7 +402,7 @@ export declare const AllSystemInfo: z.ZodObject<{
         }) & ("HDD" | "SSD" | {
             Unknown: number;
         } | undefined);
-        file_system: number[];
+        file_system: string;
         mount_point: string;
         total_space: number;
         available_space: number;
@@ -476,11 +476,11 @@ export declare const AllSystemInfo: z.ZodObject<{
     processes: z.ZodArray<z.ZodObject<{
         name: z.ZodString;
         cmd: z.ZodArray<z.ZodString, "many">;
-        exe: z.ZodString;
+        exe: z.ZodNullable<z.ZodString>;
         pid: z.ZodNumber;
         environ: z.ZodArray<z.ZodString, "many">;
-        cwd: z.ZodString;
-        root: z.ZodString;
+        cwd: z.ZodNullable<z.ZodString>;
+        root: z.ZodNullable<z.ZodString>;
         memory: z.ZodNumber;
         virtual_memory: z.ZodNumber;
         parent: z.ZodNullable<z.ZodNumber>;
@@ -524,11 +524,11 @@ export declare const AllSystemInfo: z.ZodObject<{
         name: string;
         cpu_usage: number;
         cmd: string[];
-        exe: string;
+        exe: string | null;
         pid: number;
         environ: string[];
-        cwd: string;
-        root: string;
+        cwd: string | null;
+        root: string | null;
         memory: number;
         virtual_memory: number;
         parent: number | null;
@@ -554,11 +554,11 @@ export declare const AllSystemInfo: z.ZodObject<{
         name: string;
         cpu_usage: number;
         cmd: string[];
-        exe: string;
+        exe: string | null;
         pid: number;
         environ: string[];
-        cwd: string;
-        root: string;
+        cwd: string | null;
+        root: string | null;
         memory: number;
         virtual_memory: number;
         parent: number | null;
@@ -600,7 +600,7 @@ export declare const AllSystemInfo: z.ZodObject<{
         }) & ("HDD" | "SSD" | {
             Unknown: number;
         } | undefined);
-        file_system: number[];
+        file_system: string;
         mount_point: string;
         total_space: number;
         available_space: number;
@@ -638,11 +638,11 @@ export declare const AllSystemInfo: z.ZodObject<{
         name: string;
         cpu_usage: number;
         cmd: string[];
-        exe: string;
+        exe: string | null;
         pid: number;
         environ: string[];
-        cwd: string;
-        root: string;
+        cwd: string | null;
+        root: string | null;
         memory: number;
         virtual_memory: number;
         parent: number | null;
@@ -684,7 +684,7 @@ export declare const AllSystemInfo: z.ZodObject<{
         }) & ("HDD" | "SSD" | {
             Unknown: number;
         } | undefined);
-        file_system: number[];
+        file_system: string;
         mount_point: string;
         total_space: number;
         available_space: number;
@@ -722,11 +722,11 @@ export declare const AllSystemInfo: z.ZodObject<{
         name: string;
         cpu_usage: number;
         cmd: string[];
-        exe: string;
+        exe: string | null;
         pid: number;
         environ: string[];
-        cwd: string;
-        root: string;
+        cwd: string | null;
+        root: string | null;
         memory: number;
         virtual_memory: number;
         parent: number | null;

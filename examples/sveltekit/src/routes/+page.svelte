@@ -22,14 +22,6 @@
     refreshAll,
     refreshMemory,
     refreshCpu,
-    refreshSystem,
-    refreshComponents,
-    refreshComponentsList,
-    refreshDisks,
-    refreshDisksList,
-    refreshUsersList,
-    refreshNetworks,
-    refreshNetworksList,
     refreshProcesses,
     debugCommand,
     AllSystemInfo,
@@ -38,11 +30,15 @@
     CpuInfo,
     Batteries,
   } from "tauri-plugin-system-info-api";
-  import { invoke } from "@tauri-apps/api";
-  import { z } from "zod";
   import { onMount } from "svelte";
 
   onMount(async () => {
+    // ! used to debug if there is any parse error. There shouldn't.
+    // let ret = AllSystemInfo.safeParse(await allSysInfo());
+    // if (!ret.success) {
+    //   console.log(ret.error);
+    // }
+
     console.log(AllSystemInfo.parse(await allSysInfo()));
     console.log(MemoryInfo.parse(await memoryInfo()));
     console.log(StaticInfo.parse(await staticInfo()));

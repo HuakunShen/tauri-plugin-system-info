@@ -2,8 +2,8 @@ use serde::{Deserialize, Serialize};
 use starship_battery::units::{
     ElectricPotential, Energy, Power, Ratio, ThermodynamicTemperature, Time,
 };
-use std::path::PathBuf;
-use sysinfo::{ComponentExt, CpuExt, DiskExt, NetworkExt, PidExt, ProcessExt};
+use std::{ffi::OsStr, path::PathBuf};
+// use sysinfo::{ComponentExt, CpuExt, DiskExt, NetworkExt, PidExt, ProcessExt};
 use uom::si::thermodynamic_temperature::{degree_celsius, degree_fahrenheit};
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -121,7 +121,7 @@ impl From<&sysinfo::Cpu> for Cpu {
 pub struct Disk {
     kind: DiskKind,
     name: String,
-    file_system: Vec<u8>,
+    file_system: String,
     mount_point: PathBuf,
     total_space: u64,
     available_space: u64,
@@ -133,7 +133,7 @@ impl From<&sysinfo::Disk> for Disk {
         Disk {
             kind: disk.kind().into(),
             name: disk.name().to_string_lossy().into_owned(),
-            file_system: disk.file_system().to_vec(),
+            file_system: disk.file_system().to_string_lossy().into_owned(),
             mount_point: disk.mount_point().into(),
             total_space: disk.total_space(),
             available_space: disk.available_space(),
@@ -210,11 +210,11 @@ pub type Pid = u32;
 pub struct Process {
     name: String,
     cmd: Vec<String>,
-    exe: PathBuf,
+    exe: Option<PathBuf>,
     pid: Pid,
     environ: Vec<String>,
-    cwd: PathBuf,
-    root: PathBuf,
+    cwd: Option<PathBuf>,
+    root: Option<PathBuf>,
     memory: u64,
     virtual_memory: u64,
     parent: Option<Pid>,
@@ -235,11 +235,11 @@ impl From<&sysinfo::Process> for Process {
         Process {
             name: proc.name().to_string(),
             cmd: proc.cmd().to_vec(),
-            exe: proc.exe().into(),
+            exe: proc.exe().map(|exe| exe.into()),
             pid: proc.pid().as_u32(),
             environ: proc.environ().to_vec(),
-            cwd: proc.cwd().into(),
-            root: proc.root().into(),
+            cwd: proc.cwd().map(|cwd| cwd.into()),
+            root: proc.root().map(|root| root.into()),
             memory: proc.memory(),
             virtual_memory: proc.virtual_memory(),
             parent: proc.parent().map(|parent| parent.as_u32()),

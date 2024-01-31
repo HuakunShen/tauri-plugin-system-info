@@ -2,9 +2,12 @@
 
 > This is a Tauri plugin for reading system information.
 
+- Rust Crate: https://crates.io/crates/tauri-plugin-system-info
+- TypeScript API: https://www.npmjs.com/package/tauri-plugin-system-info-api
+
 ## Installation
 
-> If you are installing from npm and crate.io package registry, make sure the versions for both packages are the same, otherwise, the API may not match.
+> If you are installing from npm and crates.io package registry, make sure the versions for both packages are the same, otherwise, the API may not match.
 
 ### Rust Install
 

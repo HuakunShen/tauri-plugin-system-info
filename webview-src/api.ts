@@ -87,30 +87,6 @@ export function refreshMemory(): Promise<void> {
 export function refreshCpu(): Promise<void> {
   return invoke("plugin:system-info|refresh_cpu");
 }
-export function refreshSystem(): Promise<void> {
-  return invoke("plugin:system-info|refresh_system");
-}
-export function refreshComponents(): Promise<void> {
-  return invoke("plugin:system-info|refresh_components");
-}
-export function refreshComponentsList(): Promise<void> {
-  return invoke("plugin:system-info|refresh_components_list");
-}
-export function refreshDisks(): Promise<void> {
-  return invoke("plugin:system-info|refresh_disks");
-}
-export function refreshDisksList(): Promise<void> {
-  return invoke("plugin:system-info|refresh_disks_list");
-}
-export function refreshUsersList(): Promise<void> {
-  return invoke("plugin:system-info|refresh_users_list");
-}
-export function refreshNetworks(): Promise<void> {
-  return invoke("plugin:system-info|refresh_networks");
-}
-export function refreshNetworksList(): Promise<void> {
-  return invoke("plugin:system-info|refresh_networks_list");
-}
 export function refreshProcesses(): Promise<void> {
   return invoke("plugin:system-info|refresh_processes");
 }

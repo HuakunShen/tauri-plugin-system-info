@@ -54,7 +54,7 @@ export type Cpu = z.infer<typeof Cpu>;
 export const Disk = z.object({
   kind: DiskKind,
   name: z.string(),
-  file_system: z.number().array(),
+  file_system: z.string(),
   mount_point: z.string(),
   total_space: z.number(),
   available_space: z.number(),
@@ -92,11 +92,11 @@ export type Component = z.infer<typeof Component>;
 export const Process = z.object({
   name: z.string(),
   cmd: z.string().array(),
-  exe: z.string(),
+  exe: z.string().nullable(),
   pid: z.number(),
   environ: z.string().array(),
-  cwd: z.string(),
-  root: z.string(),
+  cwd: z.string().nullable(),
+  root: z.string().nullable(),
   memory: z.number(),
   virtual_memory: z.number(),
   parent: z.number().nullable(),
