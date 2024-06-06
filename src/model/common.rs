@@ -1,10 +1,5 @@
 use serde::{Deserialize, Serialize};
-use starship_battery::units::{
-    ElectricPotential, Energy, Power, Ratio, ThermodynamicTemperature, Time,
-};
-use std::{ffi::OsStr, path::PathBuf};
-// use sysinfo::{ComponentExt, CpuExt, DiskExt, NetworkExt, PidExt, ProcessExt};
-use uom::si::thermodynamic_temperature::{degree_celsius, degree_fahrenheit};
+use std::path::PathBuf;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub enum DiskKind {
