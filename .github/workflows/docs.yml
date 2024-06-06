@@ -51,7 +51,7 @@ jobs:
         # working-directory: ./docs
         run: |
           pnpm i
-          pnpx typedoc webview-src/index.ts
+          pnpx typedoc guest-js/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
