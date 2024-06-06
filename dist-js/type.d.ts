@@ -1,8 +1,8 @@
 import { z } from "zod";
 export declare const BatteryState: z.ZodEnum<["Unknown", "Charging", "Discharging", "Empty", "Full"]>;
-export declare type BatteryState = z.infer<typeof BatteryState>;
+export type BatteryState = z.infer<typeof BatteryState>;
 export declare const BatteryTechnology: z.ZodEnum<["Unknown", "LithiumIon", "LeadAcid", "LithiumPolymer", "NickelMetalHydride", "NickelCadmium", "NickelZinc", "LithiumIronPhosphate", "RechargeableAlkalineManganese"]>;
-export declare type BatteryTechnology = z.infer<typeof BatteryTechnology>;
+export type BatteryTechnology = z.infer<typeof BatteryTechnology>;
 export declare const Battery: z.ZodObject<{
     state_of_charge: z.ZodNumber;
     energy: z.ZodNumber;
@@ -61,7 +61,7 @@ export declare const Battery: z.ZodObject<{
     time_to_full: number | null;
     time_to_empty: number | null;
 }>;
-export declare type Battery = z.infer<typeof Battery>;
+export type Battery = z.infer<typeof Battery>;
 export declare const Batteries: z.ZodArray<z.ZodObject<{
     state_of_charge: z.ZodNumber;
     energy: z.ZodNumber;
@@ -120,7 +120,7 @@ export declare const Batteries: z.ZodArray<z.ZodObject<{
     time_to_full: number | null;
     time_to_empty: number | null;
 }>, "many">;
-export declare type Batteries = z.infer<typeof Batteries>;
+export type Batteries = z.infer<typeof Batteries>;
 export declare const DiskKind: z.ZodUnion<[z.ZodLiteral<"HDD">, z.ZodLiteral<"SSD">, z.ZodObject<{
     Unknown: z.ZodNumber;
 }, "strip", z.ZodTypeAny, {
@@ -128,9 +128,9 @@ export declare const DiskKind: z.ZodUnion<[z.ZodLiteral<"HDD">, z.ZodLiteral<"SS
 }, {
     Unknown: number;
 }>]>;
-export declare type DiskKind = z.infer<typeof DiskKind>;
+export type DiskKind = z.infer<typeof DiskKind>;
 export declare const MacAddress: z.ZodArray<z.ZodNumber, "many">;
-export declare type MacAddress = z.infer<typeof MacAddress>;
+export type MacAddress = z.infer<typeof MacAddress>;
 export declare const ProcessStatus: z.ZodUnion<[z.ZodLiteral<"Idle">, z.ZodLiteral<"Run">, z.ZodLiteral<"Sleep">, z.ZodLiteral<"Stop">, z.ZodLiteral<"Zombie">, z.ZodLiteral<"Tracing">, z.ZodLiteral<"Dead">, z.ZodLiteral<"Wakekill">, z.ZodLiteral<"Waking">, z.ZodLiteral<"Parked">, z.ZodLiteral<"LockBlocked">, z.ZodLiteral<"UninterruptibleDiskSleep">, z.ZodObject<{
     Unknown: z.ZodNumber;
 }, "strip", z.ZodTypeAny, {
@@ -138,7 +138,7 @@ export declare const ProcessStatus: z.ZodUnion<[z.ZodLiteral<"Idle">, z.ZodLiter
 }, {
     Unknown: number;
 }>]>;
-export declare type ProcessStatus = z.infer<typeof ProcessStatus>;
+export type ProcessStatus = z.infer<typeof ProcessStatus>;
 export declare const DiskUsage: z.ZodObject<{
     total_written_bytes: z.ZodNumber;
     written_bytes: z.ZodNumber;
@@ -155,7 +155,7 @@ export declare const DiskUsage: z.ZodObject<{
     total_read_bytes: number;
     read_bytes: number;
 }>;
-export declare type DiskUsage = z.infer<typeof DiskUsage>;
+export type DiskUsage = z.infer<typeof DiskUsage>;
 export declare const Cpu: z.ZodObject<{
     name: z.ZodString;
     frequency: z.ZodNumber;
@@ -175,7 +175,7 @@ export declare const Cpu: z.ZodObject<{
     vendor_id: string;
     brand: string;
 }>;
-export declare type Cpu = z.infer<typeof Cpu>;
+export type Cpu = z.infer<typeof Cpu>;
 export declare const Disk: z.ZodObject<{
     kind: z.ZodUnion<[z.ZodLiteral<"HDD">, z.ZodLiteral<"SSD">, z.ZodObject<{
         Unknown: z.ZodNumber;
@@ -211,7 +211,7 @@ export declare const Disk: z.ZodObject<{
     available_space: number;
     is_removable: boolean;
 }>;
-export declare type Disk = z.infer<typeof Disk>;
+export type Disk = z.infer<typeof Disk>;
 export declare const Network: z.ZodObject<{
     interface_name: z.ZodString;
     received: z.ZodNumber;
@@ -261,7 +261,7 @@ export declare const Network: z.ZodObject<{
     mac_address: number[];
     mac_address_str: string;
 }>;
-export declare type Network = z.infer<typeof Network>;
+export type Network = z.infer<typeof Network>;
 export declare const Component: z.ZodObject<{
     temperature: z.ZodNumber;
     max: z.ZodNumber;
@@ -278,7 +278,7 @@ export declare const Component: z.ZodObject<{
     critical: number | null;
     label: string;
 }>;
-export declare type Component = z.infer<typeof Component>;
+export type Component = z.infer<typeof Component>;
 export declare const Process: z.ZodObject<{
     name: z.ZodString;
     cmd: z.ZodArray<z.ZodString, "many">;
@@ -378,7 +378,7 @@ export declare const Process: z.ZodObject<{
     effective_group_id: string | null;
     session_id: number | null;
 }>;
-export declare type Process = z.infer<typeof Process>;
+export type Process = z.infer<typeof Process>;
 export declare const StaticInfo: z.ZodObject<{
     hostname: z.ZodNullable<z.ZodString>;
     kernel_version: z.ZodNullable<z.ZodString>;
@@ -395,7 +395,7 @@ export declare const StaticInfo: z.ZodObject<{
     kernel_version: string | null;
     os_version: string | null;
 }>;
-export declare type StaticInfo = z.infer<typeof StaticInfo>;
+export type StaticInfo = z.infer<typeof StaticInfo>;
 export declare const MemoryInfo: z.ZodObject<{
     total_memory: z.ZodNumber;
     used_memory: z.ZodNumber;
@@ -412,7 +412,7 @@ export declare const MemoryInfo: z.ZodObject<{
     total_swap: number;
     used_swap: number;
 }>;
-export declare type MemoryInfo = z.infer<typeof MemoryInfo>;
+export type MemoryInfo = z.infer<typeof MemoryInfo>;
 export declare const CpuInfo: z.ZodObject<{
     cpus: z.ZodArray<z.ZodObject<{
         name: z.ZodString;
@@ -453,7 +453,7 @@ export declare const CpuInfo: z.ZodObject<{
     }[];
     cpu_count: number;
 }>;
-export declare type CpuInfo = z.infer<typeof CpuInfo>;
+export type CpuInfo = z.infer<typeof CpuInfo>;
 export declare const AllSystemInfo: z.ZodObject<{
     hostname: z.ZodNullable<z.ZodString>;
     kernel_version: z.ZodNullable<z.ZodString>;
@@ -941,4 +941,4 @@ export declare const AllSystemInfo: z.ZodObject<{
         time_to_empty: number | null;
     }[];
 }>;
-export declare type AllSystemInfo = z.infer<typeof AllSystemInfo>;
+export type AllSystemInfo = z.infer<typeof AllSystemInfo>;

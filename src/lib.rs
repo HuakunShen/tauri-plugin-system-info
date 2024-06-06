@@ -1,35 +1,27 @@
-pub mod commands;
-pub mod model;
-pub mod utils;
-
-use model::DiskKind;
-use serde::{ser::Serializer, Serialize};
 use tauri::{
     plugin::{Builder, TauriPlugin},
     Manager, Runtime,
 };
 
-type Result<T> = std::result::Result<T, Error>;
+use std::{collections::HashMap, sync::Mutex};
 
-#[derive(Debug, thiserror::Error)]
-pub enum Error {
-    #[error(transparent)]
-    Io(#[from] std::io::Error),
-}
+mod commands;
+#[cfg(desktop)]
+mod desktop;
+mod error;
+#[cfg(mobile)]
+mod mobile;
+mod model;
+mod utils;
 
-impl Serialize for Error {
-    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
-    where
-        S: Serializer,
-    {
-        serializer.serialize_str(self.to_string().as_ref())
-    }
-}
+pub use error::{Error, Result};
 
-#[tauri::command]
-async fn debug() -> Result<DiskKind> {
-    Ok(DiskKind::Unknown(16))
-}
+pub use utils::SysInfoState;
+
+#[cfg(desktop)]
+use desktop::SysInfo;
+#[cfg(mobile)]
+use mobile::SysInfo;
 
 /// Initializes the plugin.
 pub fn init<R: Runtime>() -> TauriPlugin<R> {
@@ -66,10 +58,15 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
             commands::refresh::refresh_cpu,
             commands::refresh::refresh_processes,
             commands::battery::batteries,
-            debug
         ])
-        .setup(|app| {
-            app.manage(utils::SysInfoState::default());
+        .setup(|app, api| {
+            #[cfg(mobile)]
+            let system_info = mobile::init(app, api)?;
+            #[cfg(desktop)]
+            // let system_info = desktop::init(app, api)?;
+            // app.manage(system_info);
+            app.manage(SysInfoState::default());
+
             Ok(())
         })
         .build()

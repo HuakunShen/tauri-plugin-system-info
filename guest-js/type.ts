@@ -1,6 +1,5 @@
 import { z } from "zod";
 
-
 export const BatteryState = z.enum([
   "Unknown",
   "Charging",
@@ -28,7 +27,9 @@ export const Battery = z.object({
   energy: z.number(),
   energy_full: z.number(),
   energy_full_design: z.number(),
-  energy_rate: z.number().describe("Amount of energy being drained from the battery."),
+  energy_rate: z
+    .number()
+    .describe("Amount of energy being drained from the battery."),
   voltage: z.number(),
   state_of_health: z.number(),
   state: BatteryState,
@@ -47,7 +48,6 @@ export type Battery = z.infer<typeof Battery>;
 
 export const Batteries = Battery.array();
 export type Batteries = z.infer<typeof Batteries>;
-
 
 // TODO: verify actual value returned from rust for "Unknown" enum
 

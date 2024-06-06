@@ -14,7 +14,7 @@
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/adapter-static": "^1.0.0-next.50",
 		"@sveltejs/kit": "^1.20.4",
-		"@tauri-apps/cli": "^1.4.0",
+		"@tauri-apps/cli": "2.0.0-beta.20",
 		"autoprefixer": "^10.4.15",
 		"daisyui": "^3.5.1",
 		"postcss": "^8.4.27",
@@ -27,7 +27,7 @@
 		"zod": "^3.23.8"
 	},
 	"dependencies": {
-		"@tauri-apps/api": "^1.1.0",
+		"@tauri-apps/api": "2.0.0-beta.13",
 		"tauri-plugin-system-info-api": "file:../.."
 	},
 	"type": "module"

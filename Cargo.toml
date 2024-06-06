@@ -1,18 +1,20 @@
 [package]
 name = "tauri-plugin-system-info"
-version = "1.0.0"
-license = "MIT"
-authors = [ "Huakun" ]
-description = "A tauri plugin for retrieving system info"
+version = "2.0.0-beta.0"
+authors = [ "You" ]
+description = ""
 edition = "2021"
-rust-version = "1.60"
-exclude = ["/examples", "/webview-dist", "/webview-src", "node_modules"]
-repository = "https://github.com/HuakunShen/tauri-plugin-system-info"
+rust-version = "1.70"
+exclude = ["/examples", "/webview-dist", "/webview-src", "/node_modules"]
+links = "tauri-plugin-system-info"
 
 [dependencies]
-tauri = { version = "1.5.4" }
+tauri = { version = "2.0.0-beta.19" }
 serde = "1.0"
 thiserror = "1.0"
 sysinfo = { version = "0.30.5" }
 starship-battery = "0.8.2"
 uom = { version = "0.35.0", features = ["serde"] }
+
+[build-dependencies]
+tauri-plugin = { version = "2.0.0-beta.15", features = ["build"] }

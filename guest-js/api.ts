@@ -1,9 +1,5 @@
-import { invoke } from "@tauri-apps/api/tauri";
+import { invoke } from "@tauri-apps/api/core";
 import {
-  DiskKind,
-  MacAddress,
-  ProcessStatus,
-  DiskUsage,
   Cpu,
   Disk,
   Network,
@@ -15,7 +11,6 @@ import {
   AllSystemInfo,
   Battery,
 } from "./type";
-import { number } from "zod";
 
 export function allSysInfo(): Promise<AllSystemInfo> {
   return invoke("plugin:system-info|all_sys_info");

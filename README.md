@@ -11,12 +11,12 @@
 
 ### Rust Install
 
-`cargo add tauri-plugin-system-info` to add the package.
+`cargo add tauri-plugin-system-info` within `src-tauri` to add the package.
 
 Or add the following to your `Cargo.toml` for the latest unpublished version (not recommanded).
 
 ```toml
-tauri-plugin-system-info = { git = "https://github.com/HuakunShen/tauri-plugin-system-info", branch = "main" }
+tauri-plugin-system-info = { git = "https://github.com/HuakunShen/tauri-plugin-system-info", branch = "v1" } # use v2 branch for Tauri v2 plugin
 ```
 
 ### NPM Install
