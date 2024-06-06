@@ -41,7 +41,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm # or pnpm / yarn
+          cache: pnpm # or pnpm / yarn
       - name: Setup Pages
         uses: actions/configure-pages@v4
       # - name: Install dependencies
@@ -50,8 +50,8 @@ jobs:
       - name: Build with Typedoc
         # working-directory: ./docs
         run: |
-          npm i
-          npx typedoc webview-src/index.ts
+          pnpm i
+          pnpx typedoc webview-src/index.ts
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
