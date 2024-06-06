@@ -13,6 +13,7 @@ import {
   MemoryInfo,
   CpuInfo,
   AllSystemInfo,
+  Battery,
 } from "./type";
 import { number } from "zod";
 
@@ -95,6 +96,6 @@ export function debugCommand() {
   return invoke("plugin:system-info|debug");
 }
 
-export function batteries() {
+export function batteries(): Promise<Battery> {
   return invoke("plugin:system-info|batteries");
 }

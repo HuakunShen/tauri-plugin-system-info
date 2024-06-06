@@ -1,4 +1,4 @@
-import { Cpu, Disk, Network, Component, Process, StaticInfo, MemoryInfo, CpuInfo, AllSystemInfo } from "./type";
+import { Cpu, Disk, Network, Component, Process, StaticInfo, MemoryInfo, CpuInfo, AllSystemInfo, Battery } from "./type";
 export declare function allSysInfo(): Promise<AllSystemInfo>;
 export declare function totalMemory(): Promise<number>;
 export declare function usedMemory(): Promise<number>;
@@ -22,4 +22,4 @@ export declare function refreshMemory(): Promise<void>;
 export declare function refreshCpu(): Promise<void>;
 export declare function refreshProcesses(): Promise<void>;
 export declare function debugCommand(): Promise<unknown>;
-export declare function batteries(): Promise<unknown>;
+export declare function batteries(): Promise<Battery>;

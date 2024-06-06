@@ -312,47 +312,49 @@ impl From<starship_battery::Technology> for Technology {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Battery {
-    state_of_charge: Ratio,
-    energy: Energy,
-    energy_full: Energy,
-    energy_full_design: Energy,
-    energy_rate: Power,
-    voltage: ElectricPotential,
-    state_of_health: Ratio,
+    state_of_charge: f32,
+    energy: f32,
+    energy_full: f32,
+    energy_full_design: f32,
+    energy_rate: f32,
+    voltage: f32,
+    state_of_health: f32,
     state: BatteryState,
     technology: Technology,
-    temperature_kelin: Option<ThermodynamicTemperature>,
+    temperature_kelin: Option<f32>,
     temperature_celsius: Option<f32>,
     temperature_fahrenheit: Option<f32>,
     cycle_count: Option<u32>,
     vendor: Option<String>,
     model: Option<String>,
     serial_number: Option<String>,
-    time_to_full: Option<Time>,
-    time_to_empty: Option<Time>,
+    time_to_full: Option<f32>,
+    time_to_empty: Option<f32>,
 }
 
 impl From<starship_battery::Battery> for Battery {
     fn from(battery: starship_battery::Battery) -> Self {
         Battery {
-            state_of_charge: battery.state_of_charge(),
-            energy: battery.energy(),
-            energy_full: battery.energy_full(),
-            energy_full_design: battery.energy_full_design(),
-            energy_rate: battery.energy_rate(),
-            voltage: battery.voltage(),
-            state_of_health: battery.state_of_health(),
+            state_of_charge: battery.state_of_charge().value,
+            energy: battery.energy().value,
+            energy_full: battery.energy_full().value,
+            energy_full_design: battery.energy_full_design().value,
+            energy_rate: battery.energy_rate().value,
+            voltage: battery.voltage().value,
+            state_of_health: battery.state_of_health().value,
             state: battery.state().into(),
             technology: battery.technology().into(),
-            temperature_kelin: battery.temperature(),
-            temperature_celsius: battery.temperature().map(|temp| temp.get::<degree_celsius>()),
-            temperature_fahrenheit: battery.temperature().map(|temp| temp.get::<degree_fahrenheit>()),
+            temperature_kelin: battery.temperature().map(|temp| temp.value),
+            temperature_celsius: battery.temperature().map(|temp| temp.value),
+            temperature_fahrenheit: battery.temperature().map(|temp| temp.value),
             cycle_count: battery.cycle_count(),
             vendor: battery.vendor().map(|vendor| vendor.to_string()),
             model: battery.model().map(|model| model.to_string()),
-            serial_number: battery.serial_number().map(|serial_number| serial_number.to_string()),
-            time_to_full: battery.time_to_full(),
-            time_to_empty: battery.time_to_empty(),
+            serial_number: battery
+                .serial_number()
+                .map(|serial_number| serial_number.to_string()),
+            time_to_full: battery.time_to_full().map(|time| time.value),
+            time_to_empty: battery.time_to_empty().map(|time| time.value),
         }
     }
 }

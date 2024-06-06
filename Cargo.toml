@@ -1,6 +1,6 @@
 [package]
 name = "tauri-plugin-system-info"
-version = "0.2.0"
+version = "1.0.0"
 license = "MIT"
 authors = [ "Huakun" ]
 description = "A tauri plugin for retrieving system info"

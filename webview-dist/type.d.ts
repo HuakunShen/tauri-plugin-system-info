@@ -1,4 +1,126 @@
 import { z } from "zod";
+export declare const BatteryState: z.ZodEnum<["Unknown", "Charging", "Discharging", "Empty", "Full"]>;
+export declare type BatteryState = z.infer<typeof BatteryState>;
+export declare const BatteryTechnology: z.ZodEnum<["Unknown", "LithiumIon", "LeadAcid", "LithiumPolymer", "NickelMetalHydride", "NickelCadmium", "NickelZinc", "LithiumIronPhosphate", "RechargeableAlkalineManganese"]>;
+export declare type BatteryTechnology = z.infer<typeof BatteryTechnology>;
+export declare const Battery: z.ZodObject<{
+    state_of_charge: z.ZodNumber;
+    energy: z.ZodNumber;
+    energy_full: z.ZodNumber;
+    energy_full_design: z.ZodNumber;
+    energy_rate: z.ZodNumber;
+    voltage: z.ZodNumber;
+    state_of_health: z.ZodNumber;
+    state: z.ZodEnum<["Unknown", "Charging", "Discharging", "Empty", "Full"]>;
+    technology: z.ZodEnum<["Unknown", "LithiumIon", "LeadAcid", "LithiumPolymer", "NickelMetalHydride", "NickelCadmium", "NickelZinc", "LithiumIronPhosphate", "RechargeableAlkalineManganese"]>;
+    temperature_kelin: z.ZodNullable<z.ZodNumber>;
+    temperature_celsius: z.ZodNullable<z.ZodNumber>;
+    temperature_fahrenheit: z.ZodNullable<z.ZodNumber>;
+    cycle_count: z.ZodNullable<z.ZodNumber>;
+    vendor: z.ZodNullable<z.ZodString>;
+    model: z.ZodNullable<z.ZodString>;
+    serial_number: z.ZodNullable<z.ZodString>;
+    time_to_full: z.ZodNullable<z.ZodNumber>;
+    time_to_empty: z.ZodNullable<z.ZodNumber>;
+}, "strip", z.ZodTypeAny, {
+    state_of_charge: number;
+    energy: number;
+    energy_full: number;
+    energy_full_design: number;
+    energy_rate: number;
+    voltage: number;
+    state_of_health: number;
+    state: "Unknown" | "Charging" | "Discharging" | "Empty" | "Full";
+    technology: "Unknown" | "LithiumIon" | "LeadAcid" | "LithiumPolymer" | "NickelMetalHydride" | "NickelCadmium" | "NickelZinc" | "LithiumIronPhosphate" | "RechargeableAlkalineManganese";
+    temperature_kelin: number | null;
+    temperature_celsius: number | null;
+    temperature_fahrenheit: number | null;
+    cycle_count: number | null;
+    vendor: string | null;
+    model: string | null;
+    serial_number: string | null;
+    time_to_full: number | null;
+    time_to_empty: number | null;
+}, {
+    state_of_charge: number;
+    energy: number;
+    energy_full: number;
+    energy_full_design: number;
+    energy_rate: number;
+    voltage: number;
+    state_of_health: number;
+    state: "Unknown" | "Charging" | "Discharging" | "Empty" | "Full";
+    technology: "Unknown" | "LithiumIon" | "LeadAcid" | "LithiumPolymer" | "NickelMetalHydride" | "NickelCadmium" | "NickelZinc" | "LithiumIronPhosphate" | "RechargeableAlkalineManganese";
+    temperature_kelin: number | null;
+    temperature_celsius: number | null;
+    temperature_fahrenheit: number | null;
+    cycle_count: number | null;
+    vendor: string | null;
+    model: string | null;
+    serial_number: string | null;
+    time_to_full: number | null;
+    time_to_empty: number | null;
+}>;
+export declare type Battery = z.infer<typeof Battery>;
+export declare const Batteries: z.ZodArray<z.ZodObject<{
+    state_of_charge: z.ZodNumber;
+    energy: z.ZodNumber;
+    energy_full: z.ZodNumber;
+    energy_full_design: z.ZodNumber;
+    energy_rate: z.ZodNumber;
+    voltage: z.ZodNumber;
+    state_of_health: z.ZodNumber;
+    state: z.ZodEnum<["Unknown", "Charging", "Discharging", "Empty", "Full"]>;
+    technology: z.ZodEnum<["Unknown", "LithiumIon", "LeadAcid", "LithiumPolymer", "NickelMetalHydride", "NickelCadmium", "NickelZinc", "LithiumIronPhosphate", "RechargeableAlkalineManganese"]>;
+    temperature_kelin: z.ZodNullable<z.ZodNumber>;
+    temperature_celsius: z.ZodNullable<z.ZodNumber>;
+    temperature_fahrenheit: z.ZodNullable<z.ZodNumber>;
+    cycle_count: z.ZodNullable<z.ZodNumber>;
+    vendor: z.ZodNullable<z.ZodString>;
+    model: z.ZodNullable<z.ZodString>;
+    serial_number: z.ZodNullable<z.ZodString>;
+    time_to_full: z.ZodNullable<z.ZodNumber>;
+    time_to_empty: z.ZodNullable<z.ZodNumber>;
+}, "strip", z.ZodTypeAny, {
+    state_of_charge: number;
+    energy: number;
+    energy_full: number;
+    energy_full_design: number;
+    energy_rate: number;
+    voltage: number;
+    state_of_health: number;
+    state: "Unknown" | "Charging" | "Discharging" | "Empty" | "Full";
+    technology: "Unknown" | "LithiumIon" | "LeadAcid" | "LithiumPolymer" | "NickelMetalHydride" | "NickelCadmium" | "NickelZinc" | "LithiumIronPhosphate" | "RechargeableAlkalineManganese";
+    temperature_kelin: number | null;
+    temperature_celsius: number | null;
+    temperature_fahrenheit: number | null;
+    cycle_count: number | null;
+    vendor: string | null;
+    model: string | null;
+    serial_number: string | null;
+    time_to_full: number | null;
+    time_to_empty: number | null;
+}, {
+    state_of_charge: number;
+    energy: number;
+    energy_full: number;
+    energy_full_design: number;
+    energy_rate: number;
+    voltage: number;
+    state_of_health: number;
+    state: "Unknown" | "Charging" | "Discharging" | "Empty" | "Full";
+    technology: "Unknown" | "LithiumIon" | "LeadAcid" | "LithiumPolymer" | "NickelMetalHydride" | "NickelCadmium" | "NickelZinc" | "LithiumIronPhosphate" | "RechargeableAlkalineManganese";
+    temperature_kelin: number | null;
+    temperature_celsius: number | null;
+    temperature_fahrenheit: number | null;
+    cycle_count: number | null;
+    vendor: string | null;
+    model: string | null;
+    serial_number: string | null;
+    time_to_full: number | null;
+    time_to_empty: number | null;
+}>, "many">;
+export declare type Batteries = z.infer<typeof Batteries>;
 export declare const DiskKind: z.ZodUnion<[z.ZodLiteral<"HDD">, z.ZodLiteral<"SSD">, z.ZodObject<{
     Unknown: z.ZodNumber;
 }, "strip", z.ZodTypeAny, {
@@ -70,11 +192,9 @@ export declare const Disk: z.ZodObject<{
     is_removable: z.ZodBoolean;
 }, "strip", z.ZodTypeAny, {
     name: string;
-    kind: ("HDD" | "SSD" | {
+    kind: "HDD" | "SSD" | {
         Unknown: number;
-    }) & ("HDD" | "SSD" | {
-        Unknown: number;
-    } | undefined);
+    };
     file_system: string;
     mount_point: string;
     total_space: number;
@@ -82,11 +202,9 @@ export declare const Disk: z.ZodObject<{
     is_removable: boolean;
 }, {
     name: string;
-    kind: ("HDD" | "SSD" | {
+    kind: "HDD" | "SSD" | {
         Unknown: number;
-    }) & ("HDD" | "SSD" | {
-        Unknown: number;
-    } | undefined);
+    };
     file_system: string;
     mount_point: string;
     total_space: number;
@@ -204,11 +322,9 @@ export declare const Process: z.ZodObject<{
     effective_group_id: z.ZodNullable<z.ZodString>;
     session_id: z.ZodNullable<z.ZodNumber>;
 }, "strip", z.ZodTypeAny, {
-    status: ("Idle" | "Run" | "Sleep" | "Stop" | "Zombie" | "Tracing" | "Dead" | "Wakekill" | "Waking" | "Parked" | "LockBlocked" | "UninterruptibleDiskSleep" | {
+    status: "Idle" | "Run" | "Sleep" | "Stop" | "Zombie" | "Tracing" | "Dead" | "Wakekill" | "Waking" | "Parked" | "LockBlocked" | "UninterruptibleDiskSleep" | {
         Unknown: number;
-    }) & ("Idle" | "Run" | "Sleep" | "Stop" | "Zombie" | "Tracing" | "Dead" | "Wakekill" | "Waking" | "Parked" | "LockBlocked" | "UninterruptibleDiskSleep" | {
-        Unknown: number;
-    } | undefined);
+    };
     name: string;
     cpu_usage: number;
     cmd: string[];
@@ -234,11 +350,9 @@ export declare const Process: z.ZodObject<{
     effective_group_id: string | null;
     session_id: number | null;
 }, {
-    status: ("Idle" | "Run" | "Sleep" | "Stop" | "Zombie" | "Tracing" | "Dead" | "Wakekill" | "Waking" | "Parked" | "LockBlocked" | "UninterruptibleDiskSleep" | {
+    status: "Idle" | "Run" | "Sleep" | "Stop" | "Zombie" | "Tracing" | "Dead" | "Wakekill" | "Waking" | "Parked" | "LockBlocked" | "UninterruptibleDiskSleep" | {
         Unknown: number;
-    }) & ("Idle" | "Run" | "Sleep" | "Stop" | "Zombie" | "Tracing" | "Dead" | "Wakekill" | "Waking" | "Parked" | "LockBlocked" | "UninterruptibleDiskSleep" | {
-        Unknown: number;
-    } | undefined);
+    };
     name: string;
     cpu_usage: number;
     cmd: string[];
@@ -385,11 +499,9 @@ export declare const AllSystemInfo: z.ZodObject<{
         is_removable: z.ZodBoolean;
     }, "strip", z.ZodTypeAny, {
         name: string;
-        kind: ("HDD" | "SSD" | {
+        kind: "HDD" | "SSD" | {
             Unknown: number;
-        }) & ("HDD" | "SSD" | {
-            Unknown: number;
-        } | undefined);
+        };
         file_system: string;
         mount_point: string;
         total_space: number;
@@ -397,11 +509,9 @@ export declare const AllSystemInfo: z.ZodObject<{
         is_removable: boolean;
     }, {
         name: string;
-        kind: ("HDD" | "SSD" | {
+        kind: "HDD" | "SSD" | {
             Unknown: number;
-        }) & ("HDD" | "SSD" | {
-            Unknown: number;
-        } | undefined);
+        };
         file_system: string;
         mount_point: string;
         total_space: number;
@@ -516,11 +626,9 @@ export declare const AllSystemInfo: z.ZodObject<{
         effective_group_id: z.ZodNullable<z.ZodString>;
         session_id: z.ZodNullable<z.ZodNumber>;
     }, "strip", z.ZodTypeAny, {
-        status: ("Idle" | "Run" | "Sleep" | "Stop" | "Zombie" | "Tracing" | "Dead" | "Wakekill" | "Waking" | "Parked" | "LockBlocked" | "UninterruptibleDiskSleep" | {
+        status: "Idle" | "Run" | "Sleep" | "Stop" | "Zombie" | "Tracing" | "Dead" | "Wakekill" | "Waking" | "Parked" | "LockBlocked" | "UninterruptibleDiskSleep" | {
             Unknown: number;
-        }) & ("Idle" | "Run" | "Sleep" | "Stop" | "Zombie" | "Tracing" | "Dead" | "Wakekill" | "Waking" | "Parked" | "LockBlocked" | "UninterruptibleDiskSleep" | {
-            Unknown: number;
-        } | undefined);
+        };
         name: string;
         cpu_usage: number;
         cmd: string[];
@@ -546,11 +654,9 @@ export declare const AllSystemInfo: z.ZodObject<{
         effective_group_id: string | null;
         session_id: number | null;
     }, {
-        status: ("Idle" | "Run" | "Sleep" | "Stop" | "Zombie" | "Tracing" | "Dead" | "Wakekill" | "Waking" | "Parked" | "LockBlocked" | "UninterruptibleDiskSleep" | {
+        status: "Idle" | "Run" | "Sleep" | "Stop" | "Zombie" | "Tracing" | "Dead" | "Wakekill" | "Waking" | "Parked" | "LockBlocked" | "UninterruptibleDiskSleep" | {
             Unknown: number;
-        }) & ("Idle" | "Run" | "Sleep" | "Stop" | "Zombie" | "Tracing" | "Dead" | "Wakekill" | "Waking" | "Parked" | "LockBlocked" | "UninterruptibleDiskSleep" | {
-            Unknown: number;
-        } | undefined);
+        };
         name: string;
         cpu_usage: number;
         cmd: string[];
@@ -576,6 +682,64 @@ export declare const AllSystemInfo: z.ZodObject<{
         effective_group_id: string | null;
         session_id: number | null;
     }>, "many">;
+    batteries: z.ZodArray<z.ZodObject<{
+        state_of_charge: z.ZodNumber;
+        energy: z.ZodNumber;
+        energy_full: z.ZodNumber;
+        energy_full_design: z.ZodNumber;
+        energy_rate: z.ZodNumber;
+        voltage: z.ZodNumber;
+        state_of_health: z.ZodNumber;
+        state: z.ZodEnum<["Unknown", "Charging", "Discharging", "Empty", "Full"]>;
+        technology: z.ZodEnum<["Unknown", "LithiumIon", "LeadAcid", "LithiumPolymer", "NickelMetalHydride", "NickelCadmium", "NickelZinc", "LithiumIronPhosphate", "RechargeableAlkalineManganese"]>;
+        temperature_kelin: z.ZodNullable<z.ZodNumber>;
+        temperature_celsius: z.ZodNullable<z.ZodNumber>;
+        temperature_fahrenheit: z.ZodNullable<z.ZodNumber>;
+        cycle_count: z.ZodNullable<z.ZodNumber>;
+        vendor: z.ZodNullable<z.ZodString>;
+        model: z.ZodNullable<z.ZodString>;
+        serial_number: z.ZodNullable<z.ZodString>;
+        time_to_full: z.ZodNullable<z.ZodNumber>;
+        time_to_empty: z.ZodNullable<z.ZodNumber>;
+    }, "strip", z.ZodTypeAny, {
+        state_of_charge: number;
+        energy: number;
+        energy_full: number;
+        energy_full_design: number;
+        energy_rate: number;
+        voltage: number;
+        state_of_health: number;
+        state: "Unknown" | "Charging" | "Discharging" | "Empty" | "Full";
+        technology: "Unknown" | "LithiumIon" | "LeadAcid" | "LithiumPolymer" | "NickelMetalHydride" | "NickelCadmium" | "NickelZinc" | "LithiumIronPhosphate" | "RechargeableAlkalineManganese";
+        temperature_kelin: number | null;
+        temperature_celsius: number | null;
+        temperature_fahrenheit: number | null;
+        cycle_count: number | null;
+        vendor: string | null;
+        model: string | null;
+        serial_number: string | null;
+        time_to_full: number | null;
+        time_to_empty: number | null;
+    }, {
+        state_of_charge: number;
+        energy: number;
+        energy_full: number;
+        energy_full_design: number;
+        energy_rate: number;
+        voltage: number;
+        state_of_health: number;
+        state: "Unknown" | "Charging" | "Discharging" | "Empty" | "Full";
+        technology: "Unknown" | "LithiumIon" | "LeadAcid" | "LithiumPolymer" | "NickelMetalHydride" | "NickelCadmium" | "NickelZinc" | "LithiumIronPhosphate" | "RechargeableAlkalineManganese";
+        temperature_kelin: number | null;
+        temperature_celsius: number | null;
+        temperature_fahrenheit: number | null;
+        cycle_count: number | null;
+        vendor: string | null;
+        model: string | null;
+        serial_number: string | null;
+        time_to_full: number | null;
+        time_to_empty: number | null;
+    }>, "many">;
 }, "strip", z.ZodTypeAny, {
     name: string | null;
     hostname: string | null;
@@ -595,11 +759,9 @@ export declare const AllSystemInfo: z.ZodObject<{
     cpu_count: number;
     disks: {
         name: string;
-        kind: ("HDD" | "SSD" | {
+        kind: "HDD" | "SSD" | {
             Unknown: number;
-        }) & ("HDD" | "SSD" | {
-            Unknown: number;
-        } | undefined);
+        };
         file_system: string;
         mount_point: string;
         total_space: number;
@@ -630,11 +792,9 @@ export declare const AllSystemInfo: z.ZodObject<{
         label: string;
     }[];
     processes: {
-        status: ("Idle" | "Run" | "Sleep" | "Stop" | "Zombie" | "Tracing" | "Dead" | "Wakekill" | "Waking" | "Parked" | "LockBlocked" | "UninterruptibleDiskSleep" | {
+        status: "Idle" | "Run" | "Sleep" | "Stop" | "Zombie" | "Tracing" | "Dead" | "Wakekill" | "Waking" | "Parked" | "LockBlocked" | "UninterruptibleDiskSleep" | {
             Unknown: number;
-        }) & ("Idle" | "Run" | "Sleep" | "Stop" | "Zombie" | "Tracing" | "Dead" | "Wakekill" | "Waking" | "Parked" | "LockBlocked" | "UninterruptibleDiskSleep" | {
-            Unknown: number;
-        } | undefined);
+        };
         name: string;
         cpu_usage: number;
         cmd: string[];
@@ -659,6 +819,26 @@ export declare const AllSystemInfo: z.ZodObject<{
         group_id: string | null;
         effective_group_id: string | null;
         session_id: number | null;
+    }[];
+    batteries: {
+        state_of_charge: number;
+        energy: number;
+        energy_full: number;
+        energy_full_design: number;
+        energy_rate: number;
+        voltage: number;
+        state_of_health: number;
+        state: "Unknown" | "Charging" | "Discharging" | "Empty" | "Full";
+        technology: "Unknown" | "LithiumIon" | "LeadAcid" | "LithiumPolymer" | "NickelMetalHydride" | "NickelCadmium" | "NickelZinc" | "LithiumIronPhosphate" | "RechargeableAlkalineManganese";
+        temperature_kelin: number | null;
+        temperature_celsius: number | null;
+        temperature_fahrenheit: number | null;
+        cycle_count: number | null;
+        vendor: string | null;
+        model: string | null;
+        serial_number: string | null;
+        time_to_full: number | null;
+        time_to_empty: number | null;
     }[];
 }, {
     name: string | null;
@@ -679,11 +859,9 @@ export declare const AllSystemInfo: z.ZodObject<{
     cpu_count: number;
     disks: {
         name: string;
-        kind: ("HDD" | "SSD" | {
+        kind: "HDD" | "SSD" | {
             Unknown: number;
-        }) & ("HDD" | "SSD" | {
-            Unknown: number;
-        } | undefined);
+        };
         file_system: string;
         mount_point: string;
         total_space: number;
@@ -714,11 +892,9 @@ export declare const AllSystemInfo: z.ZodObject<{
         label: string;
     }[];
     processes: {
-        status: ("Idle" | "Run" | "Sleep" | "Stop" | "Zombie" | "Tracing" | "Dead" | "Wakekill" | "Waking" | "Parked" | "LockBlocked" | "UninterruptibleDiskSleep" | {
+        status: "Idle" | "Run" | "Sleep" | "Stop" | "Zombie" | "Tracing" | "Dead" | "Wakekill" | "Waking" | "Parked" | "LockBlocked" | "UninterruptibleDiskSleep" | {
             Unknown: number;
-        }) & ("Idle" | "Run" | "Sleep" | "Stop" | "Zombie" | "Tracing" | "Dead" | "Wakekill" | "Waking" | "Parked" | "LockBlocked" | "UninterruptibleDiskSleep" | {
-            Unknown: number;
-        } | undefined);
+        };
         name: string;
         cpu_usage: number;
         cmd: string[];
@@ -743,128 +919,26 @@ export declare const AllSystemInfo: z.ZodObject<{
         group_id: string | null;
         effective_group_id: string | null;
         session_id: number | null;
+    }[];
+    batteries: {
+        state_of_charge: number;
+        energy: number;
+        energy_full: number;
+        energy_full_design: number;
+        energy_rate: number;
+        voltage: number;
+        state_of_health: number;
+        state: "Unknown" | "Charging" | "Discharging" | "Empty" | "Full";
+        technology: "Unknown" | "LithiumIon" | "LeadAcid" | "LithiumPolymer" | "NickelMetalHydride" | "NickelCadmium" | "NickelZinc" | "LithiumIronPhosphate" | "RechargeableAlkalineManganese";
+        temperature_kelin: number | null;
+        temperature_celsius: number | null;
+        temperature_fahrenheit: number | null;
+        cycle_count: number | null;
+        vendor: string | null;
+        model: string | null;
+        serial_number: string | null;
+        time_to_full: number | null;
+        time_to_empty: number | null;
     }[];
 }>;
 export declare type AllSystemInfo = z.infer<typeof AllSystemInfo>;
-export declare const BatteryState: z.ZodEnum<["Unknown", "Charging", "Discharging", "Empty", "Full"]>;
-export declare type BatteryState = z.infer<typeof BatteryState>;
-export declare const BatteryTechnology: z.ZodEnum<["Unknown", "LithiumIon", "LeadAcid", "LithiumPolymer", "NickelMetalHydride", "NickelCadmium", "NickelZinc", "LithiumIronPhosphate", "RechargeableAlkalineManganese"]>;
-export declare type BatteryTechnology = z.infer<typeof BatteryTechnology>;
-export declare const Battery: z.ZodObject<{
-    state_of_charge: z.ZodNumber;
-    energy: z.ZodNumber;
-    energy_full: z.ZodNumber;
-    energy_full_design: z.ZodNumber;
-    energy_rate: z.ZodNumber;
-    voltage: z.ZodNumber;
-    state_of_health: z.ZodNumber;
-    state: z.ZodEnum<["Unknown", "Charging", "Discharging", "Empty", "Full"]>;
-    technology: z.ZodEnum<["Unknown", "LithiumIon", "LeadAcid", "LithiumPolymer", "NickelMetalHydride", "NickelCadmium", "NickelZinc", "LithiumIronPhosphate", "RechargeableAlkalineManganese"]>;
-    temperature_kelin: z.ZodNullable<z.ZodNumber>;
-    temperature_celsius: z.ZodNullable<z.ZodNumber>;
-    temperature_fahrenheit: z.ZodNullable<z.ZodNumber>;
-    cycle_count: z.ZodNullable<z.ZodNumber>;
-    vendor: z.ZodNullable<z.ZodString>;
-    model: z.ZodNullable<z.ZodString>;
-    serial_number: z.ZodNullable<z.ZodString>;
-    time_to_full: z.ZodNullable<z.ZodNumber>;
-    time_to_empty: z.ZodNullable<z.ZodNumber>;
-}, "strip", z.ZodTypeAny, {
-    state_of_charge: number;
-    energy: number;
-    energy_full: number;
-    energy_full_design: number;
-    energy_rate: number;
-    voltage: number;
-    state_of_health: number;
-    state: "Unknown" | "Charging" | "Discharging" | "Empty" | "Full";
-    technology: "Unknown" | "LithiumIon" | "LeadAcid" | "LithiumPolymer" | "NickelMetalHydride" | "NickelCadmium" | "NickelZinc" | "LithiumIronPhosphate" | "RechargeableAlkalineManganese";
-    temperature_kelin: number | null;
-    temperature_celsius: number | null;
-    temperature_fahrenheit: number | null;
-    cycle_count: number | null;
-    vendor: string | null;
-    model: string | null;
-    serial_number: string | null;
-    time_to_full: number | null;
-    time_to_empty: number | null;
-}, {
-    state_of_charge: number;
-    energy: number;
-    energy_full: number;
-    energy_full_design: number;
-    energy_rate: number;
-    voltage: number;
-    state_of_health: number;
-    state: "Unknown" | "Charging" | "Discharging" | "Empty" | "Full";
-    technology: "Unknown" | "LithiumIon" | "LeadAcid" | "LithiumPolymer" | "NickelMetalHydride" | "NickelCadmium" | "NickelZinc" | "LithiumIronPhosphate" | "RechargeableAlkalineManganese";
-    temperature_kelin: number | null;
-    temperature_celsius: number | null;
-    temperature_fahrenheit: number | null;
-    cycle_count: number | null;
-    vendor: string | null;
-    model: string | null;
-    serial_number: string | null;
-    time_to_full: number | null;
-    time_to_empty: number | null;
-}>;
-export declare type Battery = z.infer<typeof Battery>;
-export declare const Batteries: z.ZodArray<z.ZodObject<{
-    state_of_charge: z.ZodNumber;
-    energy: z.ZodNumber;
-    energy_full: z.ZodNumber;
-    energy_full_design: z.ZodNumber;
-    energy_rate: z.ZodNumber;
-    voltage: z.ZodNumber;
-    state_of_health: z.ZodNumber;
-    state: z.ZodEnum<["Unknown", "Charging", "Discharging", "Empty", "Full"]>;
-    technology: z.ZodEnum<["Unknown", "LithiumIon", "LeadAcid", "LithiumPolymer", "NickelMetalHydride", "NickelCadmium", "NickelZinc", "LithiumIronPhosphate", "RechargeableAlkalineManganese"]>;
-    temperature_kelin: z.ZodNullable<z.ZodNumber>;
-    temperature_celsius: z.ZodNullable<z.ZodNumber>;
-    temperature_fahrenheit: z.ZodNullable<z.ZodNumber>;
-    cycle_count: z.ZodNullable<z.ZodNumber>;
-    vendor: z.ZodNullable<z.ZodString>;
-    model: z.ZodNullable<z.ZodString>;
-    serial_number: z.ZodNullable<z.ZodString>;
-    time_to_full: z.ZodNullable<z.ZodNumber>;
-    time_to_empty: z.ZodNullable<z.ZodNumber>;
-}, "strip", z.ZodTypeAny, {
-    state_of_charge: number;
-    energy: number;
-    energy_full: number;
-    energy_full_design: number;
-    energy_rate: number;
-    voltage: number;
-    state_of_health: number;
-    state: "Unknown" | "Charging" | "Discharging" | "Empty" | "Full";
-    technology: "Unknown" | "LithiumIon" | "LeadAcid" | "LithiumPolymer" | "NickelMetalHydride" | "NickelCadmium" | "NickelZinc" | "LithiumIronPhosphate" | "RechargeableAlkalineManganese";
-    temperature_kelin: number | null;
-    temperature_celsius: number | null;
-    temperature_fahrenheit: number | null;
-    cycle_count: number | null;
-    vendor: string | null;
-    model: string | null;
-    serial_number: string | null;
-    time_to_full: number | null;
-    time_to_empty: number | null;
-}, {
-    state_of_charge: number;
-    energy: number;
-    energy_full: number;
-    energy_full_design: number;
-    energy_rate: number;
-    voltage: number;
-    state_of_health: number;
-    state: "Unknown" | "Charging" | "Discharging" | "Empty" | "Full";
-    technology: "Unknown" | "LithiumIon" | "LeadAcid" | "LithiumPolymer" | "NickelMetalHydride" | "NickelCadmium" | "NickelZinc" | "LithiumIronPhosphate" | "RechargeableAlkalineManganese";
-    temperature_kelin: number | null;
-    temperature_celsius: number | null;
-    temperature_fahrenheit: number | null;
-    cycle_count: number | null;
-    vendor: string | null;
-    model: string | null;
-    serial_number: string | null;
-    time_to_full: number | null;
-    time_to_empty: number | null;
-}>, "many">;
-export declare type Batteries = z.infer<typeof Batteries>;

@@ -18,6 +18,7 @@ pub struct AllSystemInfo {
     pub networks: Vec<Network>,
     pub components: Vec<Component>,
     pub processes: Vec<Process>,
+    pub batteries: Vec<Battery>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

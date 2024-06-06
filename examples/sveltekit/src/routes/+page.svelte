@@ -39,18 +39,18 @@
     //   console.log(ret.error);
     // }
 
-    console.log(AllSystemInfo.parse(await allSysInfo()));
-    console.log(MemoryInfo.parse(await memoryInfo()));
-    console.log(StaticInfo.parse(await staticInfo()));
-    console.log(CpuInfo.parse(await cpuInfo()));
-    console.log(Batteries.parse(await batteries()));
+    console.log("All System Info", AllSystemInfo.parse(await allSysInfo()));
+    console.log("Memory Info", MemoryInfo.parse(await memoryInfo()));
+    console.log("Static Info", StaticInfo.parse(await staticInfo()));
+    console.log("CPU Info", CpuInfo.parse(await cpuInfo()));
+    console.log("Battery Info", Batteries.parse(await batteries()));
   });
 
   let data: string = "";
   let error: string = "";
 </script>
 
-<div class="alert alert-warning">
+<div class="alert alert-warning flex flex-col">
   <span
     >Make sure you are in Tauri desktop app with development mode. Right click and inspect elements, check console for system info logged. There is too much data to display on screen.</span
   >

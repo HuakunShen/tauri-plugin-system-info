@@ -1,6 +1,6 @@
 {
   "name": "tauri-plugin-system-info-api",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "author": "Huakun",
   "description": "",
   "browser": "webview-dist/index.js",
