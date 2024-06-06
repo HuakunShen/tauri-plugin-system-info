@@ -203,6 +203,6 @@ export const AllSystemInfo = z.object({
   networks: Network.array(),
   components: Component.array(),
   processes: Process.array(),
-  batteries: Battery.array(),
+  batteries: Batteries,
 });
 export type AllSystemInfo = z.infer<typeof AllSystemInfo>;

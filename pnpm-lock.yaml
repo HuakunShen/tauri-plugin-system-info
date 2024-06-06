@@ -31,7 +31,7 @@ importers:
         specifier: 4.7.3
         version: 4.7.3
       zod:
-        specifier: ^3.22.1
+        specifier: ^3.23.8
         version: 3.23.8
 
 packages:

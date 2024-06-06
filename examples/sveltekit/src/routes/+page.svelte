@@ -38,7 +38,6 @@
     // if (!ret.success) {
     //   console.log(ret.error);
     // }
-
     console.log("All System Info", AllSystemInfo.parse(await allSysInfo()));
     console.log("Memory Info", MemoryInfo.parse(await memoryInfo()));
     console.log("Static Info", StaticInfo.parse(await staticInfo()));
