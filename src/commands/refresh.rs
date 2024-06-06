@@ -28,6 +28,10 @@ pub fn refresh_processes(state: tauri::State<'_, SysInfoState>) -> Result<(), St
 
 #[tauri::command]
 pub fn refresh_process(pid: u32, state: tauri::State<'_, SysInfoState>) -> Result<(), String> {
-    state.sysinfo.lock().unwrap().refresh_process(Pid::from(pid as usize));
+    state
+        .sysinfo
+        .lock()
+        .unwrap()
+        .refresh_process(Pid::from(pid as usize));
     Ok(())
 }

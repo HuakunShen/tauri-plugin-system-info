@@ -26,7 +26,12 @@ pub fn all_sys_info(state: tauri::State<'_, SysInfoState>) -> Result<AllSystemIn
     let networks = state.sysinfo.lock().unwrap().networks();
     let components = state.sysinfo.lock().unwrap().components();
     let processes = state.sysinfo.lock().unwrap().processes();
-    let batteries = state.sysinfo.lock().unwrap().batteries().map_err(|err| err.to_string())?;
+    let batteries = state
+        .sysinfo
+        .lock()
+        .unwrap()
+        .batteries()
+        .map_err(|err| err.to_string())?;
     Ok(AllSystemInfo {
         hostname,
         kernel_version,
