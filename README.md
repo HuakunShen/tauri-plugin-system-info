@@ -1,5 +1,7 @@
 # Tauri Plugin system-info
 
+Documentation Website: https://crosscopy.github.io/tauri-plugin-system-info
+
 > This is a Tauri plugin for reading system information.
 
 - Rust Crate: https://crates.io/crates/tauri-plugin-system-info
@@ -8,6 +10,8 @@
 ## Installation
 
 > If you are installing from npm and crates.io package registry, make sure the versions for both packages are the same, otherwise, the API may not match.
+
+> For Tauri v1 app, use version 1.x, for Tauri v2 app, use version 2.x. (this applies to both npm and crates.io packages)
 
 ### Rust Install
 
