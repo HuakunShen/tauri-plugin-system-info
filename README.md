@@ -1,6 +1,6 @@
 # Tauri Plugin system-info
 
-Documentation Website: https://crosscopy.github.io/tauri-plugin-system-info
+Documentation Website: https://huakunshen.github.io/tauri-plugin-system-info
 
 > This is a Tauri plugin for reading system information.
 
