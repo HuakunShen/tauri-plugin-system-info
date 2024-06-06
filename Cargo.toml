@@ -1,12 +1,14 @@
 [package]
 name = "tauri-plugin-system-info"
 version = "2.0.0-beta.0"
-authors = [ "You" ]
-description = ""
+authors = ["You"]
 edition = "2021"
 rust-version = "1.70"
-exclude = ["/examples", "/webview-dist", "/webview-src", "/node_modules"]
+exclude = ["/examples", "/dist-js", "/guest-js", "/node_modules"]
 links = "tauri-plugin-system-info"
+description = "A tauri plugin for retrieving system info"
+license = "MIT"
+repository = "https://github.com/HuakunShen/tauri-plugin-system-info"
 
 [dependencies]
 tauri = { version = "2.0.0-beta.19" }
