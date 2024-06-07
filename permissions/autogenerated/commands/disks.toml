@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-disks"
+description = "Enables the disks command without any pre-configured scope."
+commands.allow = ["disks"]
+
+[[permission]]
+identifier = "deny-disks"
+description = "Denies the disks command without any pre-configured scope."
+commands.deny = ["disks"]

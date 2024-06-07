@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-processes"
+description = "Enables the processes command without any pre-configured scope."
+commands.allow = ["processes"]
+
+[[permission]]
+identifier = "deny-processes"
+description = "Denies the processes command without any pre-configured scope."
+commands.deny = ["processes"]

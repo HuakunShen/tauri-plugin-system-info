@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-kernel-version"
+description = "Enables the kernel_version command without any pre-configured scope."
+commands.allow = ["kernel_version"]
+
+[[permission]]
+identifier = "deny-kernel-version"
+description = "Denies the kernel_version command without any pre-configured scope."
+commands.deny = ["kernel_version"]

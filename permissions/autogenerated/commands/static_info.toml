@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-static-info"
+description = "Enables the static_info command without any pre-configured scope."
+commands.allow = ["static_info"]
+
+[[permission]]
+identifier = "deny-static-info"
+description = "Denies the static_info command without any pre-configured scope."
+commands.deny = ["static_info"]

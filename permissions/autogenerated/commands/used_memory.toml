@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-used-memory"
+description = "Enables the used_memory command without any pre-configured scope."
+commands.allow = ["used_memory"]
+
+[[permission]]
+identifier = "deny-used-memory"
+description = "Denies the used_memory command without any pre-configured scope."
+commands.deny = ["used_memory"]

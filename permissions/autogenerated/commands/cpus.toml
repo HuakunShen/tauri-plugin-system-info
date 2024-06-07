@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-cpus"
+description = "Enables the cpus command without any pre-configured scope."
+commands.allow = ["cpus"]
+
+[[permission]]
+identifier = "deny-cpus"
+description = "Denies the cpus command without any pre-configured scope."
+commands.deny = ["cpus"]

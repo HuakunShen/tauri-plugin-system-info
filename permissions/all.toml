@@ -2,7 +2,7 @@
 
 [[permission]]
 identifier = "allow-all"
-description = "This enables all permissions for Jarvis"
+description = "This enables all permissions for system info plugin"
 commands.allow = [
     "all_sys_info",
     "total_memory",

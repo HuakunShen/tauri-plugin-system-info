@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-memory-info"
+description = "Enables the memory_info command without any pre-configured scope."
+commands.allow = ["memory_info"]
+
+[[permission]]
+identifier = "deny-memory-info"
+description = "Denies the memory_info command without any pre-configured scope."
+commands.deny = ["memory_info"]

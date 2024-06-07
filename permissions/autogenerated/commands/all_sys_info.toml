@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-all-sys-info"
+description = "Enables the all_sys_info command without any pre-configured scope."
+commands.allow = ["all_sys_info"]
+
+[[permission]]
+identifier = "deny-all-sys-info"
+description = "Denies the all_sys_info command without any pre-configured scope."
+commands.deny = ["all_sys_info"]

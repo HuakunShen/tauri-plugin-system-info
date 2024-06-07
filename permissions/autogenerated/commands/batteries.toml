@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-batteries"
+description = "Enables the batteries command without any pre-configured scope."
+commands.allow = ["batteries"]
+
+[[permission]]
+identifier = "deny-batteries"
+description = "Denies the batteries command without any pre-configured scope."
+commands.deny = ["batteries"]

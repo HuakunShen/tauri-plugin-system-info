@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-total-swap"
+description = "Enables the total_swap command without any pre-configured scope."
+commands.allow = ["total_swap"]
+
+[[permission]]
+identifier = "deny-total-swap"
+description = "Denies the total_swap command without any pre-configured scope."
+commands.deny = ["total_swap"]

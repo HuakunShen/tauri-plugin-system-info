@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-refresh-memory"
+description = "Enables the refresh_memory command without any pre-configured scope."
+commands.allow = ["refresh_memory"]
+
+[[permission]]
+identifier = "deny-refresh-memory"
+description = "Denies the refresh_memory command without any pre-configured scope."
+commands.deny = ["refresh_memory"]

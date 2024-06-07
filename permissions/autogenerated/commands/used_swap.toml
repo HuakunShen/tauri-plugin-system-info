@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-used-swap"
+description = "Enables the used_swap command without any pre-configured scope."
+commands.allow = ["used_swap"]
+
+[[permission]]
+identifier = "deny-used-swap"
+description = "Denies the used_swap command without any pre-configured scope."
+commands.deny = ["used_swap"]

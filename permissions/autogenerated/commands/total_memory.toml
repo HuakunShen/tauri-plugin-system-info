@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-total-memory"
+description = "Enables the total_memory command without any pre-configured scope."
+commands.allow = ["total_memory"]
+
+[[permission]]
+identifier = "deny-total-memory"
+description = "Denies the total_memory command without any pre-configured scope."
+commands.deny = ["total_memory"]

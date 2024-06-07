@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-refresh-cpu"
+description = "Enables the refresh_cpu command without any pre-configured scope."
+commands.allow = ["refresh_cpu"]
+
+[[permission]]
+identifier = "deny-refresh-cpu"
+description = "Denies the refresh_cpu command without any pre-configured scope."
+commands.deny = ["refresh_cpu"]
