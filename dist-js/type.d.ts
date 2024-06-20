@@ -942,3 +942,4 @@ export declare const AllSystemInfo: z.ZodObject<{
     }[];
 }>;
 export type AllSystemInfo = z.infer<typeof AllSystemInfo>;
+//# sourceMappingURL=type.d.ts.map

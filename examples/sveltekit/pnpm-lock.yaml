@@ -12,8 +12,8 @@ importers:
         specifier: 2.0.0-beta.13
         version: 2.0.0-beta.13
       tauri-plugin-system-info-api:
-        specifier: file:../..
-        version: file:../..
+        specifier: link:../../
+        version: link:../..
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^2.0.0
@@ -994,9 +994,6 @@ packages:
     engines: {node: '>=14.0.0'}
     hasBin: true
 
-  tauri-plugin-system-info-api@file:../..:
-    resolution: {directory: ../.., type: directory}
-
   thenify-all@1.6.0:
     resolution: {integrity: sha512-RNxQH/qI8/t3thXJDwcstUO4zeqo64+Uy/+sNVRBx4Xn2OX+OZ9oP+iJnNFqplFra2ZUVeKCSa2oVWi3T4uVmA==}
     engines: {node: '>=0.8'}
@@ -1952,11 +1949,6 @@ snapshots:
       sucrase: 3.35.0
     transitivePeerDependencies:
       - ts-node
-
-  tauri-plugin-system-info-api@file:../..:
-    dependencies:
-      '@tauri-apps/api': 2.0.0-beta.13
-      zod: 3.23.8
 
   thenify-all@1.6.0:
     dependencies:
