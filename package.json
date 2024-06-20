@@ -1,8 +1,12 @@
 {
   "name": "tauri-plugin-system-info-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Huakun",
-  "description": "",
+  "description": "System Info Plugin for Tauri Apps",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HuakunShen/tauri-plugin-system-info.git"
+  },
   "browser": "webview-dist/index.js",
   "main": "webview-dist/index.js",
   "types": "webview-dist/index.d.ts",

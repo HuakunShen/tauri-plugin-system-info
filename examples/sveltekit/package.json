@@ -28,7 +28,7 @@
 	},
 	"dependencies": {
 		"@tauri-apps/api": "^1.1.0",
-		"tauri-plugin-system-info-api": "file:../.."
+		"tauri-plugin-system-info-api": "link:../../"
 	},
 	"type": "module"
 }
