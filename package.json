@@ -1,6 +1,6 @@
 {
   "name": "tauri-plugin-system-info-api",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Huakun",
   "description": "System Info Plugin for Tauri Apps",
   "repository": {
@@ -26,5 +26,10 @@
   "dependencies": {
     "@tauri-apps/api": "^1.0.0",
     "tslib": "^2.1.0"
-  }
+  },
+  "files": [
+    "webview-src",
+    "webview-dist",
+    "README.md"
+  ]
 }
