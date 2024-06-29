@@ -1,5 +1,8 @@
 # Tauri Plugin system-info
 
+![NPM Version](https://img.shields.io/npm/v/tauri-plugin-system-info-api)
+![Crates.io Version](https://img.shields.io/crates/v/tauri-plugin-system-info)
+
 > This is a Tauri plugin for reading system information.
 
 - Rust Crate: https://crates.io/crates/tauri-plugin-system-info
