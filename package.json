@@ -27,15 +27,15 @@
     "pretest": "pnpm build"
   },
   "dependencies": {
-    "valibot": "^0.40.0",
-    "@tauri-apps/api": "^2.0.1"
+    "valibot": "^1.0.0-beta.8",
+    "@tauri-apps/api": "^2.1.1"
   },
   "devDependencies": {
-    "@rollup/plugin-typescript": "^11.1.6",
-    "rollup": "^4.24.0",
-    "tslib": "^2.6.2",
-    "typedoc": "^0.26.6",
-    "typescript": "^5.3.3"
+    "@rollup/plugin-typescript": "^12.1.1",
+    "rollup": "^4.27.4",
+    "tslib": "^2.8.1",
+    "typedoc": "^0.26.11",
+    "typescript": "^5.7.2"
   },
-  "packageManager": "pnpm@9.1.2"
+  "packageManager": "pnpm@9.14.2"
 }
