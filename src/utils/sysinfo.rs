@@ -129,8 +129,7 @@ impl SysInfo {
         let manager = starship_battery::Manager::new()?;
         Ok(manager
             .batteries()?
-            .enumerate()
-            .filter_map(|(_, maybe_battery)| match maybe_battery {
+            .filter_map(|maybe_battery| match maybe_battery {
                 Ok(battery) => Some(battery.into()),
                 Err(_) => None,
             })

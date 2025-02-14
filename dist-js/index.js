@@ -1,5 +1,5 @@
 import { invoke } from '@tauri-apps/api/core';
-import { enum_, object, number, nullable, string, array, union, literal, pipe, length, boolean } from 'valibot';
+import { enum_, object, nullable, number, string, array, union, literal, pipe, length, boolean } from 'valibot';
 
 function allSysInfo() {
     return invoke("plugin:system-info|all_sys_info");
