@@ -7,17 +7,17 @@ pub fn total_memory(state: tauri::State<'_, SysInfoState>) -> Result<u64, String
 
 #[tauri::command]
 pub fn used_memory(state: tauri::State<'_, SysInfoState>) -> Result<u64, String> {
-    Ok(state.sysinfo.lock().unwrap().total_memory())
+    Ok(state.sysinfo.lock().unwrap().used_memory())
 }
 
 #[tauri::command]
 pub fn total_swap(state: tauri::State<'_, SysInfoState>) -> Result<u64, String> {
-    Ok(state.sysinfo.lock().unwrap().total_memory())
+    Ok(state.sysinfo.lock().unwrap().total_swap())
 }
 
 #[tauri::command]
 pub fn used_swap(state: tauri::State<'_, SysInfoState>) -> Result<u64, String> {
-    Ok(state.sysinfo.lock().unwrap().total_memory())
+    Ok(state.sysinfo.lock().unwrap().used_swap())
 }
 
 #[tauri::command]

@@ -34,7 +34,14 @@
     usedSwap,
   } from "tauri-plugin-system-info-api";
   import * as v from "valibot";
+  import { Inspect } from "svelte-inspect-value";
 
+  let memoryInfoData: MemoryInfo | undefined;
+  let staticInfoData: StaticInfo | undefined;
+  let cpuInfoData: CpuInfo | undefined;
+  let batteriesData: Batteries | undefined;
+  let processesData: Process[] | undefined;
+  let allSysInfoData: AllSystemInfo | undefined;
   onMount(async () => {
     reload();
     invoke("cpu_count").then((res) => {
@@ -44,16 +51,21 @@
 
   async function reload() {
     refreshAll();
-    // ! used to debug if there is any parse error. There shouldn't.
-    // let ret = AllSystemInfo.safeParse(await allSysInfo());
-    // if (!ret.success) {
-    //   console.log(ret.error);
-    // }
-    console.log("All System Info", v.parse(AllSystemInfo, await allSysInfo()));
-    console.log("Memory Info", v.parse(MemoryInfo, await memoryInfo()));
-    console.log("Static Info", v.parse(StaticInfo, await staticInfo()));
-    console.log("CPU Info", v.parse(CpuInfo, await cpuInfo()));
-    console.log("Battery Info", v.parse(Batteries, await batteries()));
+    allSysInfoData = v.parse(AllSystemInfo, await allSysInfo());
+    memoryInfoData = v.parse(MemoryInfo, await memoryInfo());
+    staticInfoData = v.parse(StaticInfo, await staticInfo());
+    cpuInfoData = v.parse(CpuInfo, await cpuInfo());
+    batteriesData = v.parse(Batteries, await batteries());
+    console.log("All System Info", allSysInfoData);
+    console.log("memoryInfoData", memoryInfoData);
+    console.log("staticInfoData", staticInfoData);
+    console.log("cpuInfoData", cpuInfoData);
+    console.log("batteriesData", batteriesData);
+  }
+
+  async function loadProcesses() {
+    processesData = v.parse(v.array(Process), await processes());
+    console.log("processesData", processesData);
     const processesInfo = await processes();
 
     const allPs = v.parse(
@@ -66,15 +78,26 @@
   let error: string = "";
 </script>
 
-<div class="alert alert-warning flex flex-col">
-  <span
-    >Make sure you are in Tauri desktop app with development mode. Right click
-    and inspect elements, check console for system info logged. There is too
-    much data to display on screen.</span
-  >
-  <span
-    >If there is error in console, this library may not support your
-    OS/computer, you can notify the author.</span
-  >
+<div class="space-y-2">
+  <h1 class="text-4xl font-bold">System Info</h1>
   <button class="btn" on:click={reload}>Reload</button>
+
+  <h2 class="text-2xl font-bold">Memory Info</h2>
+  <Inspect name="memoryInfoData" value={memoryInfoData} />
+
+  <h2 class="text-2xl font-bold">CPU Info</h2>
+  <Inspect name="cpuInfoData" value={cpuInfoData} />
+
+  <h2 class="text-2xl font-bold">Static Info</h2>
+  <Inspect name="staticInfoData" value={staticInfoData} />
+
+  <h2 class="text-2xl font-bold">Batteries</h2>
+  <Inspect name="batteriesData" value={batteriesData} />
+
+  <h2 class="text-2xl font-bold">Processes</h2>
+  <button class="btn" on:click={loadProcesses}>Load Processes</button>
+  <Inspect name="processesData" value={processesData} />
+
+  <h2 class="text-2xl font-bold">All System Info</h2>
+  <Inspect name="allSysInfoData" value={allSysInfoData} />
 </div>
