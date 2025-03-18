@@ -41,7 +41,6 @@ jobs:
         id: check_version
       - name: Publish
         if: steps.check_version.outcome != 'success'
-        working-directory: ./packages/kkrpc
         run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
