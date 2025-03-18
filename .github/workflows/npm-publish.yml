@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - main
+      - v2
   release:
     types: [created]
   workflow_dispatch:
