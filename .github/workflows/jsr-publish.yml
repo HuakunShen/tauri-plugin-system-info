@@ -1,4 +1,4 @@
-name: Publish
+name: JSR Publish
 on:
   push:
     branches:
@@ -24,4 +24,4 @@ jobs:
           pnpm install
           pnpm build
       - name: Publish package
-        run: npx jsr publish
+        run: npx jsr publish --allow-slow-types
