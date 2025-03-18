@@ -10,19 +10,19 @@ import {
   pipe,
   string,
   union,
-  type InferOutput
-} from "valibot"
+  type InferOutput,
+} from "valibot";
 
 enum BatteryStateEnum {
   Unknown = "Unknown",
   Charging = "Charging",
   Discharging = "Discharging",
   Empty = "Empty",
-  Full = "Full"
+  Full = "Full",
 }
 
-export const BatteryState = enum_(BatteryStateEnum)
-export type BatteryState = InferOutput<typeof BatteryState>
+export const BatteryState = enum_(BatteryStateEnum);
+export type BatteryState = InferOutput<typeof BatteryState>;
 
 enum BatteryTechnologyEnum {
   Unknown = "Unknown",
@@ -33,10 +33,10 @@ enum BatteryTechnologyEnum {
   NickelCadmium = "NickelCadmium",
   NickelZinc = "NickelZinc",
   LithiumIronPhosphate = "LithiumIronPhosphate",
-  RechargeableAlkalineManganese = "RechargeableAlkalineManganese"
+  RechargeableAlkalineManganese = "RechargeableAlkalineManganese",
 }
-export const BatteryTechnology = enum_(BatteryTechnologyEnum)
-export type BatteryTechnology = InferOutput<typeof BatteryTechnology>
+export const BatteryTechnology = enum_(BatteryTechnologyEnum);
+export type BatteryTechnology = InferOutput<typeof BatteryTechnology>;
 
 export const Battery = object({
   state_of_charge: number(),
@@ -57,12 +57,12 @@ export const Battery = object({
   model: nullable(string()),
   serial_number: nullable(string()),
   time_to_full: nullable(number()),
-  time_to_empty: nullable(number())
-})
-export type Battery = InferOutput<typeof Battery>
+  time_to_empty: nullable(number()),
+});
+export type Battery = InferOutput<typeof Battery>;
 
-export const Batteries = array(Battery)
-export type Batteries = InferOutput<typeof Batteries>
+export const Batteries = array(Battery);
+export type Batteries = InferOutput<typeof Batteries>;
 
 // TODO: verify actual value returned from rust for "Unknown" enum
 
@@ -71,13 +71,13 @@ export const DiskKind = union([
   literal("HDD"),
   literal("SSD"),
   object({
-    Unknown: number()
-  })
-])
-export type DiskKind = InferOutput<typeof DiskKind>
+    Unknown: number(),
+  }),
+]);
+export type DiskKind = InferOutput<typeof DiskKind>;
 
-export const MacAddress = pipe(array(number()), length(6))
-export type MacAddress = InferOutput<typeof MacAddress>
+export const MacAddress = pipe(array(number()), length(6));
+export type MacAddress = InferOutput<typeof MacAddress>;
 
 export const ProcessStatus = union([
   literal("Idle"),
@@ -93,27 +93,27 @@ export const ProcessStatus = union([
   literal("LockBlocked"),
   literal("UninterruptibleDiskSleep"),
   object({
-    Unknown: number()
-  })
-])
-export type ProcessStatus = InferOutput<typeof ProcessStatus>
+    Unknown: number(),
+  }),
+]);
+export type ProcessStatus = InferOutput<typeof ProcessStatus>;
 
 export const DiskUsage = object({
   total_written_bytes: number(),
   written_bytes: number(),
   total_read_bytes: number(),
-  read_bytes: number()
-})
-export type DiskUsage = InferOutput<typeof DiskUsage>
+  read_bytes: number(),
+});
+export type DiskUsage = InferOutput<typeof DiskUsage>;
 
 export const Cpu = object({
   name: string(),
   frequency: number(),
   cpu_usage: number(),
   vendor_id: string(),
-  brand: string()
-})
-export type Cpu = InferOutput<typeof Cpu>
+  brand: string(),
+});
+export type Cpu = InferOutput<typeof Cpu>;
 
 export const Disk = object({
   kind: DiskKind,
@@ -122,9 +122,9 @@ export const Disk = object({
   mount_point: string(),
   total_space: number(),
   available_space: number(),
-  is_removable: boolean()
-})
-export type Disk = InferOutput<typeof Disk>
+  is_removable: boolean(),
+});
+export type Disk = InferOutput<typeof Disk>;
 
 export const Network = object({
   interface_name: string(),
@@ -141,17 +141,17 @@ export const Network = object({
   errors_on_transmitted: number(),
   total_errors_on_transmitted: number(),
   mac_address: array(number()),
-  mac_address_str: string()
-})
-export type Network = InferOutput<typeof Network>
+  mac_address_str: string(),
+});
+export type Network = InferOutput<typeof Network>;
 
 export const Component = object({
   temperature: number(),
   max: number(),
   critical: nullable(number()),
-  label: string()
-})
-export type Component = InferOutput<typeof Component>
+  label: string(),
+});
+export type Component = InferOutput<typeof Component>;
 
 export const Process = object({
   name: string(),
@@ -173,32 +173,32 @@ export const Process = object({
   effective_user_id: nullable(string()),
   group_id: nullable(string()),
   effective_group_id: nullable(string()),
-  session_id: nullable(number())
-})
-export type Process = InferOutput<typeof Process>
+  session_id: nullable(number()),
+});
+export type Process = InferOutput<typeof Process>;
 
 // aggregate info
 export const StaticInfo = object({
   hostname: nullable(string()),
   kernel_version: nullable(string()),
   os_version: nullable(string()),
-  name: nullable(string())
-})
-export type StaticInfo = InferOutput<typeof StaticInfo>
+  name: nullable(string()),
+});
+export type StaticInfo = InferOutput<typeof StaticInfo>;
 
 export const MemoryInfo = object({
   total_memory: number(),
   used_memory: number(),
   total_swap: number(),
-  used_swap: number()
-})
-export type MemoryInfo = InferOutput<typeof MemoryInfo>
+  used_swap: number(),
+});
+export type MemoryInfo = InferOutput<typeof MemoryInfo>;
 
 export const CpuInfo = object({
   cpus: array(Cpu),
-  cpu_count: number()
-})
-export type CpuInfo = InferOutput<typeof CpuInfo>
+  cpu_count: number(),
+});
+export type CpuInfo = InferOutput<typeof CpuInfo>;
 
 export const AllSystemInfo = object({
   hostname: nullable(string()),
@@ -218,6 +218,13 @@ export const AllSystemInfo = object({
   networks: array(Network),
   components: array(Component),
   processes: array(Process),
-  batteries: Batteries
-})
-export type AllSystemInfo = InferOutput<typeof AllSystemInfo>
+  batteries: Batteries,
+});
+export type AllSystemInfo = InferOutput<typeof AllSystemInfo>;
+
+export const LoadAverage = object({
+  one: number(),
+  five: number(),
+  fifteen: number(),
+});
+export type LoadAverage = InferOutput<typeof LoadAverage>;

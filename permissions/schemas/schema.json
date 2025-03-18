@@ -400,6 +400,16 @@
           "const": "deny-kernel-version"
         },
         {
+          "description": "Enables the load_average command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-load-average"
+        },
+        {
+          "description": "Denies the load_average command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-load-average"
+        },
+        {
           "description": "Enables the memory_info command without any pre-configured scope.",
           "type": "string",
           "const": "allow-memory-info"
@@ -528,6 +538,16 @@
           "description": "Denies the total_swap command without any pre-configured scope.",
           "type": "string",
           "const": "deny-total-swap"
+        },
+        {
+          "description": "Enables the uptime command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-uptime"
+        },
+        {
+          "description": "Denies the uptime command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-uptime"
         },
         {
           "description": "Enables the used_memory command without any pre-configured scope.",

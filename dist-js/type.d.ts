@@ -282,5 +282,11 @@ export declare const AllSystemInfo: import("valibot").ObjectSchema<{
     }, undefined>, undefined>;
 }, undefined>;
 export type AllSystemInfo = InferOutput<typeof AllSystemInfo>;
+export declare const LoadAverage: import("valibot").ObjectSchema<{
+    readonly one: import("valibot").NumberSchema<undefined>;
+    readonly five: import("valibot").NumberSchema<undefined>;
+    readonly fifteen: import("valibot").NumberSchema<undefined>;
+}, undefined>;
+export type LoadAverage = InferOutput<typeof LoadAverage>;
 export {};
 //# sourceMappingURL=type.d.ts.map

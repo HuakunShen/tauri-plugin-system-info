@@ -1,4 +1,7 @@
-use crate::{model::AllSystemInfo, utils::SysInfoState};
+use crate::{
+    model::{AllSystemInfo, LoadAverage},
+    utils::SysInfoState,
+};
 
 pub mod battery;
 pub mod component;
@@ -49,4 +52,14 @@ pub fn all_sys_info(state: tauri::State<'_, SysInfoState>) -> Result<AllSystemIn
         processes,
         batteries,
     })
+}
+
+#[tauri::command]
+pub fn uptime(state: tauri::State<'_, SysInfoState>) -> Result<u64, String> {
+    Ok(state.sysinfo.lock().unwrap().uptime())
+}
+
+#[tauri::command]
+pub fn load_average(state: tauri::State<'_, SysInfoState>) -> Result<LoadAverage, String> {
+    Ok(state.sysinfo.lock().unwrap().load_average().into())
 }

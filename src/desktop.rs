@@ -2,7 +2,8 @@ use crate::model::{Battery, Component, Cpu, Disk, Network, Process};
 use serde::de::DeserializeOwned;
 use std::sync::Mutex;
 use sysinfo::{
-    Components, CpuRefreshKind, Disks, Networks, Pid, ProcessRefreshKind, RefreshKind, System,
+    Components, CpuRefreshKind, Disks, LoadAvg, Networks, Pid, ProcessRefreshKind, RefreshKind,
+    System,
 };
 use tauri::{plugin::PluginApi, AppHandle, Runtime};
 
@@ -145,5 +146,13 @@ impl SysInfo {
                 Err(_) => None,
             })
             .collect())
+    }
+
+    pub fn uptime(&self) -> u64 {
+        System::uptime()
+    }
+
+    pub fn load_average(&self) -> LoadAvg {
+        System::load_average()
     }
 }

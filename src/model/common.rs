@@ -356,3 +356,20 @@ impl From<starship_battery::Battery> for Battery {
         }
     }
 }
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LoadAverage {
+    pub one: f64,
+    pub five: f64,
+    pub fifteen: f64,
+}
+
+impl From<sysinfo::LoadAvg> for LoadAverage {
+    fn from(value: sysinfo::LoadAvg) -> Self {
+        LoadAverage {
+            one: value.one,
+            five: value.five,
+            fifteen: value.fifteen,
+        }
+    }
+}

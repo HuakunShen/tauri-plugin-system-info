@@ -284,6 +284,32 @@ Denies the kernel_version command without any pre-configured scope.
 <tr>
 <td>
 
+`system-info:allow-load-average`
+
+</td>
+<td>
+
+Enables the load_average command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`system-info:deny-load-average`
+
+</td>
+<td>
+
+Denies the load_average command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
 `system-info:allow-memory-info`
 
 </td>
@@ -615,6 +641,32 @@ Enables the total_swap command without any pre-configured scope.
 <td>
 
 Denies the total_swap command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`system-info:allow-uptime`
+
+</td>
+<td>
+
+Enables the uptime command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`system-info:deny-uptime`
+
+</td>
+<td>
+
+Denies the uptime command without any pre-configured scope.
 
 </td>
 </tr>

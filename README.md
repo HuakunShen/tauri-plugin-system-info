@@ -8,6 +8,10 @@ Rust Documentation: https://docs.rs/crate/tauri-plugin-system-info
 - Rust Crate: https://crates.io/crates/tauri-plugin-system-info
 - TypeScript API: https://www.npmjs.com/package/tauri-plugin-system-info-api
 
+## Demo App
+
+![](https://i.imgur.com/tcuNU4K.png)
+
 ## Installation
 
 > If you are installing from npm and crates.io package registry, make sure the versions for both packages are the same, otherwise, the API may not match.

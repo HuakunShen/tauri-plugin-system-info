@@ -28,10 +28,13 @@
     refreshProcesses,
     staticInfo,
     StaticInfo,
+    uptime,
+    loadAverage,
     totalMemory,
     totalSwap,
     usedMemory,
     usedSwap,
+    LoadAverage,
   } from "tauri-plugin-system-info-api";
   import * as v from "valibot";
   import { Inspect } from "svelte-inspect-value";
@@ -41,6 +44,8 @@
   let cpuInfoData: CpuInfo | undefined;
   let batteriesData: Batteries | undefined;
   let processesData: Process[] | undefined;
+  let loadAverageData: LoadAverage | undefined;
+  let uptimeData: number | undefined;
   let allSysInfoData: AllSystemInfo | undefined;
   onMount(async () => {
     reload();
@@ -56,11 +61,15 @@
     staticInfoData = v.parse(StaticInfo, await staticInfo());
     cpuInfoData = v.parse(CpuInfo, await cpuInfo());
     batteriesData = v.parse(Batteries, await batteries());
+    loadAverageData = v.parse(LoadAverage, await loadAverage());
+    uptimeData = await uptime();
     console.log("All System Info", allSysInfoData);
     console.log("memoryInfoData", memoryInfoData);
     console.log("staticInfoData", staticInfoData);
     console.log("cpuInfoData", cpuInfoData);
     console.log("batteriesData", batteriesData);
+    console.log("loadAverageData", loadAverageData);
+    console.log("uptimeData", uptimeData);
   }
 
   async function loadProcesses() {
@@ -78,9 +87,15 @@
   let error: string = "";
 </script>
 
-<div class="space-y-2">
+<div class="space-y-2 py-2">
   <h1 class="text-4xl font-bold">System Info</h1>
   <button class="btn" on:click={reload}>Reload</button>
+
+  <h2 class="text-2xl font-bold">Load Average</h2>
+  <Inspect name="loadAverageData" value={loadAverageData} />
+
+  <h2 class="text-2xl font-bold">Uptime</h2>
+  <Inspect name="uptimeData" value={uptimeData} />
 
   <h2 class="text-2xl font-bold">Memory Info</h2>
   <Inspect name="memoryInfoData" value={memoryInfoData} />

@@ -28,6 +28,8 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
     Builder::new("system-info")
         .invoke_handler(tauri::generate_handler![
             commands::all_sys_info,
+            commands::uptime,
+            commands::load_average,
             // memory
             commands::memory::total_memory,
             commands::memory::used_memory,

@@ -83,6 +83,12 @@ function debugCommand() {
 function batteries() {
     return core.invoke("plugin:system-info|batteries");
 }
+function uptime() {
+    return core.invoke("plugin:system-info|uptime");
+}
+function loadAverage() {
+    return core.invoke("plugin:system-info|load_average");
+}
 
 var BatteryStateEnum;
 (function (BatteryStateEnum) {
@@ -125,7 +131,7 @@ const Battery = valibot.object({
     model: valibot.nullable(valibot.string()),
     serial_number: valibot.nullable(valibot.string()),
     time_to_full: valibot.nullable(valibot.number()),
-    time_to_empty: valibot.nullable(valibot.number())
+    time_to_empty: valibot.nullable(valibot.number()),
 });
 const Batteries = valibot.array(Battery);
 // TODO: verify actual value returned from rust for "Unknown" enum
@@ -134,8 +140,8 @@ const DiskKind = valibot.union([
     valibot.literal("HDD"),
     valibot.literal("SSD"),
     valibot.object({
-        Unknown: valibot.number()
-    })
+        Unknown: valibot.number(),
+    }),
 ]);
 const MacAddress = valibot.pipe(valibot.array(valibot.number()), valibot.length(6));
 const ProcessStatus = valibot.union([
@@ -152,21 +158,21 @@ const ProcessStatus = valibot.union([
     valibot.literal("LockBlocked"),
     valibot.literal("UninterruptibleDiskSleep"),
     valibot.object({
-        Unknown: valibot.number()
-    })
+        Unknown: valibot.number(),
+    }),
 ]);
 const DiskUsage = valibot.object({
     total_written_bytes: valibot.number(),
     written_bytes: valibot.number(),
     total_read_bytes: valibot.number(),
-    read_bytes: valibot.number()
+    read_bytes: valibot.number(),
 });
 const Cpu = valibot.object({
     name: valibot.string(),
     frequency: valibot.number(),
     cpu_usage: valibot.number(),
     vendor_id: valibot.string(),
-    brand: valibot.string()
+    brand: valibot.string(),
 });
 const Disk = valibot.object({
     kind: DiskKind,
@@ -175,7 +181,7 @@ const Disk = valibot.object({
     mount_point: valibot.string(),
     total_space: valibot.number(),
     available_space: valibot.number(),
-    is_removable: valibot.boolean()
+    is_removable: valibot.boolean(),
 });
 const Network = valibot.object({
     interface_name: valibot.string(),
@@ -192,13 +198,13 @@ const Network = valibot.object({
     errors_on_transmitted: valibot.number(),
     total_errors_on_transmitted: valibot.number(),
     mac_address: valibot.array(valibot.number()),
-    mac_address_str: valibot.string()
+    mac_address_str: valibot.string(),
 });
 const Component = valibot.object({
     temperature: valibot.number(),
     max: valibot.number(),
     critical: valibot.nullable(valibot.number()),
-    label: valibot.string()
+    label: valibot.string(),
 });
 const Process = valibot.object({
     name: valibot.string(),
@@ -220,24 +226,24 @@ const Process = valibot.object({
     effective_user_id: valibot.nullable(valibot.string()),
     group_id: valibot.nullable(valibot.string()),
     effective_group_id: valibot.nullable(valibot.string()),
-    session_id: valibot.nullable(valibot.number())
+    session_id: valibot.nullable(valibot.number()),
 });
 // aggregate info
 const StaticInfo = valibot.object({
     hostname: valibot.nullable(valibot.string()),
     kernel_version: valibot.nullable(valibot.string()),
     os_version: valibot.nullable(valibot.string()),
-    name: valibot.nullable(valibot.string())
+    name: valibot.nullable(valibot.string()),
 });
 const MemoryInfo = valibot.object({
     total_memory: valibot.number(),
     used_memory: valibot.number(),
     total_swap: valibot.number(),
-    used_swap: valibot.number()
+    used_swap: valibot.number(),
 });
 const CpuInfo = valibot.object({
     cpus: valibot.array(Cpu),
-    cpu_count: valibot.number()
+    cpu_count: valibot.number(),
 });
 const AllSystemInfo = valibot.object({
     hostname: valibot.nullable(valibot.string()),
@@ -254,7 +260,12 @@ const AllSystemInfo = valibot.object({
     networks: valibot.array(Network),
     components: valibot.array(Component),
     processes: valibot.array(Process),
-    batteries: Batteries
+    batteries: Batteries,
+});
+const LoadAverage = valibot.object({
+    one: valibot.number(),
+    five: valibot.number(),
+    fifteen: valibot.number(),
 });
 
 exports.AllSystemInfo = AllSystemInfo;
@@ -268,6 +279,7 @@ exports.CpuInfo = CpuInfo;
 exports.Disk = Disk;
 exports.DiskKind = DiskKind;
 exports.DiskUsage = DiskUsage;
+exports.LoadAverage = LoadAverage;
 exports.MacAddress = MacAddress;
 exports.MemoryInfo = MemoryInfo;
 exports.Network = Network;
@@ -284,6 +296,7 @@ exports.debugCommand = debugCommand;
 exports.disks = disks;
 exports.hostname = hostname;
 exports.kernelVersion = kernelVersion;
+exports.loadAverage = loadAverage;
 exports.memoryInfo = memoryInfo;
 exports.name = name;
 exports.networks = networks;
@@ -296,5 +309,6 @@ exports.refreshProcesses = refreshProcesses;
 exports.staticInfo = staticInfo;
 exports.totalMemory = totalMemory;
 exports.totalSwap = totalSwap;
+exports.uptime = uptime;
 exports.usedMemory = usedMemory;
 exports.usedSwap = usedSwap;

@@ -10,6 +10,7 @@ import {
   CpuInfo,
   AllSystemInfo,
   Battery,
+  LoadAverage,
 } from "./type";
 
 export function allSysInfo(): Promise<AllSystemInfo> {
@@ -93,4 +94,12 @@ export function debugCommand() {
 
 export function batteries(): Promise<Battery[]> {
   return invoke("plugin:system-info|batteries");
+}
+
+export function uptime(): Promise<number> {
+  return invoke("plugin:system-info|uptime");
+}
+
+export function loadAverage(): Promise<LoadAverage> {
+  return invoke("plugin:system-info|load_average");
 }

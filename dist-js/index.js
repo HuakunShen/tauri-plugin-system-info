@@ -81,6 +81,12 @@ function debugCommand() {
 function batteries() {
     return invoke("plugin:system-info|batteries");
 }
+function uptime() {
+    return invoke("plugin:system-info|uptime");
+}
+function loadAverage() {
+    return invoke("plugin:system-info|load_average");
+}
 
 var BatteryStateEnum;
 (function (BatteryStateEnum) {
@@ -123,7 +129,7 @@ const Battery = object({
     model: nullable(string()),
     serial_number: nullable(string()),
     time_to_full: nullable(number()),
-    time_to_empty: nullable(number())
+    time_to_empty: nullable(number()),
 });
 const Batteries = array(Battery);
 // TODO: verify actual value returned from rust for "Unknown" enum
@@ -132,8 +138,8 @@ const DiskKind = union([
     literal("HDD"),
     literal("SSD"),
     object({
-        Unknown: number()
-    })
+        Unknown: number(),
+    }),
 ]);
 const MacAddress = pipe(array(number()), length(6));
 const ProcessStatus = union([
@@ -150,21 +156,21 @@ const ProcessStatus = union([
     literal("LockBlocked"),
     literal("UninterruptibleDiskSleep"),
     object({
-        Unknown: number()
-    })
+        Unknown: number(),
+    }),
 ]);
 const DiskUsage = object({
     total_written_bytes: number(),
     written_bytes: number(),
     total_read_bytes: number(),
-    read_bytes: number()
+    read_bytes: number(),
 });
 const Cpu = object({
     name: string(),
     frequency: number(),
     cpu_usage: number(),
     vendor_id: string(),
-    brand: string()
+    brand: string(),
 });
 const Disk = object({
     kind: DiskKind,
@@ -173,7 +179,7 @@ const Disk = object({
     mount_point: string(),
     total_space: number(),
     available_space: number(),
-    is_removable: boolean()
+    is_removable: boolean(),
 });
 const Network = object({
     interface_name: string(),
@@ -190,13 +196,13 @@ const Network = object({
     errors_on_transmitted: number(),
     total_errors_on_transmitted: number(),
     mac_address: array(number()),
-    mac_address_str: string()
+    mac_address_str: string(),
 });
 const Component = object({
     temperature: number(),
     max: number(),
     critical: nullable(number()),
-    label: string()
+    label: string(),
 });
 const Process = object({
     name: string(),
@@ -218,24 +224,24 @@ const Process = object({
     effective_user_id: nullable(string()),
     group_id: nullable(string()),
     effective_group_id: nullable(string()),
-    session_id: nullable(number())
+    session_id: nullable(number()),
 });
 // aggregate info
 const StaticInfo = object({
     hostname: nullable(string()),
     kernel_version: nullable(string()),
     os_version: nullable(string()),
-    name: nullable(string())
+    name: nullable(string()),
 });
 const MemoryInfo = object({
     total_memory: number(),
     used_memory: number(),
     total_swap: number(),
-    used_swap: number()
+    used_swap: number(),
 });
 const CpuInfo = object({
     cpus: array(Cpu),
-    cpu_count: number()
+    cpu_count: number(),
 });
 const AllSystemInfo = object({
     hostname: nullable(string()),
@@ -252,7 +258,12 @@ const AllSystemInfo = object({
     networks: array(Network),
     components: array(Component),
     processes: array(Process),
-    batteries: Batteries
+    batteries: Batteries,
+});
+const LoadAverage = object({
+    one: number(),
+    five: number(),
+    fifteen: number(),
 });
 
-export { AllSystemInfo, Batteries, Battery, BatteryState, BatteryTechnology, Component, Cpu, CpuInfo, Disk, DiskKind, DiskUsage, MacAddress, MemoryInfo, Network, Process, ProcessStatus, StaticInfo, allSysInfo, batteries, components, cpuCount, cpuInfo, cpus, debugCommand, disks, hostname, kernelVersion, memoryInfo, name, networks, osVersion, processes, refreshAll, refreshCpu, refreshMemory, refreshProcesses, staticInfo, totalMemory, totalSwap, usedMemory, usedSwap };
+export { AllSystemInfo, Batteries, Battery, BatteryState, BatteryTechnology, Component, Cpu, CpuInfo, Disk, DiskKind, DiskUsage, LoadAverage, MacAddress, MemoryInfo, Network, Process, ProcessStatus, StaticInfo, allSysInfo, batteries, components, cpuCount, cpuInfo, cpus, debugCommand, disks, hostname, kernelVersion, loadAverage, memoryInfo, name, networks, osVersion, processes, refreshAll, refreshCpu, refreshMemory, refreshProcesses, staticInfo, totalMemory, totalSwap, uptime, usedMemory, usedSwap };

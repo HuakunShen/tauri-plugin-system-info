@@ -1,4 +1,4 @@
-import { Cpu, Disk, Network, Component, Process, StaticInfo, MemoryInfo, CpuInfo, AllSystemInfo, Battery } from "./type";
+import { Cpu, Disk, Network, Component, Process, StaticInfo, MemoryInfo, CpuInfo, AllSystemInfo, Battery, LoadAverage } from "./type";
 export declare function allSysInfo(): Promise<AllSystemInfo>;
 export declare function totalMemory(): Promise<number>;
 export declare function usedMemory(): Promise<number>;
@@ -23,4 +23,6 @@ export declare function refreshCpu(): Promise<void>;
 export declare function refreshProcesses(): Promise<void>;
 export declare function debugCommand(): Promise<unknown>;
 export declare function batteries(): Promise<Battery[]>;
+export declare function uptime(): Promise<number>;
+export declare function loadAverage(): Promise<LoadAverage>;
 //# sourceMappingURL=api.d.ts.map

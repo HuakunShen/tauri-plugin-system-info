@@ -22,6 +22,8 @@ const COMMANDS: &[&str] = &[
     "refresh_cpu",
     "refresh_processes",
     "batteries",
+    "load_average",
+    "uptime",
 ];
 
 fn main() {

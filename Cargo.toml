@@ -18,7 +18,7 @@ rustdoc-args = ["--cfg", "docsrs"]
 tauri = { version = "2.0.1" }
 serde = "1.0"
 thiserror = "1.0"
-sysinfo = { version = "0.30.5" }
+sysinfo = { version = "0.30.13" }
 starship-battery = "0.8.2"
 uom = { version = "0.35.0", features = ["serde"] }
 
