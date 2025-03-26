@@ -27,7 +27,7 @@
     "pretest": "pnpm build"
   },
   "dependencies": {
-    "valibot": "^1.0.0-beta.10",
+    "valibot": "^1.0.0",
     "@tauri-apps/api": "^2.2.0"
   },
   "devDependencies": {

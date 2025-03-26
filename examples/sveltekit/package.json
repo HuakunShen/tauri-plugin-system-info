@@ -30,7 +30,7 @@
     "@tauri-apps/api": "^2.0.1",
     "svelte-inspect-value": "^0.5.0",
     "tauri-plugin-system-info-api": "link:../../",
-    "valibot": "^1.0.0-beta.10"
+    "valibot": "^1.0.0"
   },
   "type": "module"
 }
